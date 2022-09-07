@@ -1,0 +1,22 @@
+{
+  "name": "RCToolKit",
+  "version": "0.1.0",
+  "summary": "A short description of RCToolKit.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/liuming/RCToolKit",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "liuming": "liuming@wuji.co"
+  },
+  "source": {
+    "git": "https://github.com/liuming/RCToolKit.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "source_files": "RCToolKit/Classes/**/*"
+}

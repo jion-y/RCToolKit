@@ -1,0 +1,6 @@
+framework module Pods_RCToolKit_Tests {
+  umbrella header "Pods-RCToolKit_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

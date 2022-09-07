@@ -1,0 +1,16 @@
+PODS:
+  - RCToolKit (0.1.0)
+
+DEPENDENCIES:
+  - RCToolKit (from `../`)
+
+EXTERNAL SOURCES:
+  RCToolKit:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  RCToolKit: b8111af5ee84186e55ec02aabf8c1cf13616e3f7
+
+PODFILE CHECKSUM: 5ea8f51ad36dde8060a6dc8ce345cbc25d3c2527
+
+COCOAPODS: 1.11.2
