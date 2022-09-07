@@ -8,10 +8,9 @@
 import Foundation
 
 public class CacheNode: Equatable {
-    public static func == (_: CacheNode, _: CacheNode) -> Bool {
+    public static func == (left: CacheNode, right: CacheNode) -> Bool {
         return false
     }
-
     public var key: KeyEnable?
     public var data: ValueEnable?
 

@@ -165,7 +165,7 @@ extension Cahche {
     private func defaultCachePath() -> String {
         let documentPaths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .allDomainsMask, true)
         let documentPath = documentPaths.first ?? ""
-        return documentPath + "/com.pt.cache/cache/"
+        return documentPath + "/com.rc.cache/cache/"
     }
 }
 
