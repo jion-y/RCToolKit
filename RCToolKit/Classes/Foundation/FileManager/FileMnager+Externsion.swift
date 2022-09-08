@@ -6,6 +6,7 @@
 //
 
 import Foundation
+extension FileManager:ExtensionCompatible {}
 public extension ExtensionWrapper where Base == FileManager {
     func createDirectory(_ path: String) ->Bool {
         var isDir: ObjCBool = false

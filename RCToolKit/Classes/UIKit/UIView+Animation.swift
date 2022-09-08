@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+extension UIView:ExtensionCompatible{}
 extension ExtensionWrapper where Base: UIView {
     public enum ShakeDirection: Int {
         case horizontal

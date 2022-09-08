@@ -7,5 +7,5 @@
 
 import Foundation
 import UIKit
-extension UIView:ExtensionCompatible{}
-extension FileManager:ExtensionCompatible {}
+
+

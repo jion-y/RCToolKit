@@ -7,45 +7,51 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		16596474ECD9DEA227618970F923F17E /* RCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2BF23CC3A6D6A065B4AAF5ECA75FD7 /* RCLog.swift */; };
-		178A1C7C9E9E8B1DEEF07CF2E9254341 /* LFUMemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3206314AA433A613667AB13982634AAC /* LFUMemoryCache.swift */; };
-		1FFDCE998877B1CC48FCAA41707F5FEB /* RCBaseCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38D5E209AD90FB29CB4C6B67233763E /* RCBaseCache.swift */; };
-		38BC31603A3BEC91568053282B1216F1 /* UIAdatper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5398D60C3E57E37D9037D73811ABF853 /* UIAdatper.swift */; };
+		08C2F1F652A490C4822AB5DBF8551CF5 /* RCCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D74CC9A3DD7BE1E92343A088B82A62A /* RCCacheManager.swift */; };
+		13D05B07B9BE38C67B03197CD69E2AA8 /* RCToolKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D957B1F7CAF84EA25C808443B6154D1A /* RCToolKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2F254D9F2CFFD99168535C2D953B7CE1 /* SafeArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C56132B9D4BF8698B47EF68E81D9B5 /* SafeArray.swift */; };
 		3ACA7B78DC17A1D7924E144003E572DD /* Pods-RCToolKit_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B768288049726DBEC5631088E00A8314 /* Pods-RCToolKit_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5EFE815B41E535275C396725F289F268 /* CacheNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53648B5F70D380546051787BDFA1730 /* CacheNode.swift */; };
-		62FC06D6772801C208E204FF86F9BBD6 /* SafeArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EEAE5369FD86288769961D2352C04C /* SafeArray.swift */; };
+		4A85AD9F2DF2843533F1202520279F47 /* RCLinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7C4F5132ECA21499A58F3D2C243AFA /* RCLinkedList.swift */; };
+		4E099399A8A3541B172E48EA515E5668 /* RCStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAFE92A10E5855EE678A33131CAA051 /* RCStack.swift */; };
+		4F900E165AFE968A3F3D314F9B958A5D /* DiskCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D8C28721828833F3A34DD0263AE81 /* DiskCache.swift */; };
+		535BCAC4978545089775BDE7036570B3 /* UIAdatper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF98D37429226DF71ABE9D8FF475A158 /* UIAdatper.swift */; };
+		5A4D1492AFB8583A43BDAE3843FC0719 /* UIView+CreateSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D8E85F8EB4E336C44E5C56EBA87788 /* UIView+CreateSubView.swift */; };
+		5D3D936A8DB8A2DC13FBB5BE46CE66EC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		637A2856F0F8D2762DC0B2C8104A96CD /* FIFOMemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD29EB7CAB94C7CDE92C1B3E25FA928 /* FIFOMemoryCache.swift */; };
 		657C9C57EFB552FECCD8ABD1FDD5F29C /* Pods-RCToolKit_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C6CB48560FA68E548A325A5D897373 /* Pods-RCToolKit_Example-dummy.m */; };
-		6BB55E2DA0327FBFCC6D6BB0D0841377 /* UIView+Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F636812F44D2D84C50BF98D2019AE1 /* UIView+Frame.swift */; };
-		70C4F0D1190DE31834B50525F58AF2D6 /* BaseWarpper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5570CEAFB60AEAA897AFA833A67E34 /* BaseWarpper.swift */; };
 		76D61D6FD8E2A61001104944CB1AB9C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		7D79B7D7E4F886AC08527601DD5979A2 /* LRUMemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CEFF3A26A4BA9AB4605DD005064EF1 /* LRUMemoryCache.swift */; };
-		87BCE68748DAFAC8A4750F33C5AC854F /* UIView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA0370E39662B29BFD781C5C80F48E8 /* UIView+Animation.swift */; };
-		92354F3B9D37BED4F5421D9CEE3547CB /* FileMnager+Externsion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5A5DE2804FE367FB60F3EDC78B1714 /* FileMnager+Externsion.swift */; };
-		9D52A4F39CED8F2BFE6A256E659997F6 /* RCLinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D97F62170DFD8D8718584E26FBB5CD /* RCLinkedList.swift */; };
-		9E3543469EDD377C2A9832B1BDE1EBCE /* RCCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E27042C535525892836B3CD06378E /* RCCacheManager.swift */; };
-		9EF37891C9B1829AF5EB06C6AF4847B5 /* DiskCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E790A09D073B3BAAF687F2934516D43E /* DiskCache.swift */; };
-		A15CCF592F0871322253D604430E6827 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		835F677337E67029CC6AF4C35724EAAB /* FileMnager+Externsion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9B280EDE741642FDD54829F98BC86B /* FileMnager+Externsion.swift */; };
+		930E3C9AC7CF8A2337E4A8C4C49C3C08 /* BaseWarpper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D684E66A594BB72DFF496978308E6C /* BaseWarpper.swift */; };
+		934B81A72043B2696FC390898C911F81 /* LFUMemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DACE71BFDE05612DA970F94BF50CE9 /* LFUMemoryCache.swift */; };
 		A2A32B9D26228ABFD22ECC2D24748FAE /* Pods-RCToolKit_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F6141AC85DD3967514C1C5EF2E3B5BF /* Pods-RCToolKit_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AB29123C0815830D5794C1AAE9233EF3 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A034E7AB80FBBF256175F6681B0AC09 /* Queue.swift */; };
-		AE36848C73BB208AC6DAB4777048E400 /* UIView+CreateSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C433F2D37A2D177BFDE57152DEF414AD /* UIView+CreateSubView.swift */; };
-		AE599A6FB2680B0337CAAA74CD7AE483 /* RCWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311612666C6C124F294333E45B8578F7 /* RCWrapper.swift */; };
-		B30FC994F14C63E59DE57DEC2475D7CC /* RCToolKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D30054A068676A4CE4F85639163DAAEA /* RCToolKit-dummy.m */; };
+		A62260A83E2E45511C4B6A76B19A59F3 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2E18BC19A6D773186B4C699E2BCEC1 /* Queue.swift */; };
+		AF84AF5F1895F61AA800A93000342201 /* UIView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C43FC3954D8951D88926C682F689DA /* UIView+Animation.swift */; };
 		B90C8E05304F1AFAC1AD2203E3FCDBC2 /* Pods-RCToolKit_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C4A63C70003E4829D3F3CDA573726F /* Pods-RCToolKit_Tests-dummy.m */; };
-		C6D98D7145037942B539CF0BDF557E46 /* FIFOMemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5395603852BFBF550DD777A2BA76EA13 /* FIFOMemoryCache.swift */; };
+		B97C76140BF26B9B5DC55777435C6FA1 /* RCWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BC64648452E50ED2A96E620E5D59F /* RCWrapper.swift */; };
+		BEEB933928C98DEE00914A05 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEB933828C98DEE00914A05 /* String+Extension.swift */; };
+		BEEB933B28C9927100914A05 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEB933A28C9927100914A05 /* Date+Extension.swift */; };
+		BEEB933F28C9989000914A05 /* Any+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEB933E28C9989000914A05 /* Any+Extension.swift */; };
+		BEEB934128C9E12000914A05 /* RCConsoleLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEB934028C9E12000914A05 /* RCConsoleLog.swift */; };
+		BEEB934328C9E3F000914A05 /* RCDefaultFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEB934228C9E3F000914A05 /* RCDefaultFormatter.swift */; };
+		C4231F57A0A9E9EF287CCF68BAEBADDD /* RCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CD5BE146C3C7AA513DDEB70EFD1BC6 /* RCLog.swift */; };
+		C7AAA96A24D53F897FB40485175BBA36 /* UIView+Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2FE6CCFA755F56B43AC96524DBDFDE /* UIView+Frame.swift */; };
+		C9EC6A564332F86A82C857F0E970FEA8 /* RCBaseCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1E8815BAE0A4E61EC8A43A4D863496 /* RCBaseCache.swift */; };
+		D0A49D587D80501FEA564B1AF8FB106D /* LRUMemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DB7A14F259A81E9C3166660DDB4720 /* LRUMemoryCache.swift */; };
 		D61D37A44EF10D22B643018B6CE8AD86 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		F12E8A013031EB7817F16579C9BECEC0 /* RCToolKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 89E424E0DD6B51B0734AD14703591103 /* RCToolKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F26FD1C228475F1FB5D5E36FBFC7AE33 /* RCStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDF4DB43BD0238A62892D75F12B4ACE /* RCStack.swift */; };
+		DFA02B7E8712963A003223C2F4EF91A0 /* RCLogItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD8496456A8922297BCD809CC81D730 /* RCLogItem.swift */; };
+		E1517B5EF0C84CBBEF397AA1ECF01498 /* RCToolKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E30D5DFE93931DAAC05BCD87AAB4EF8 /* RCToolKit-dummy.m */; };
+		FAE5302AD0DBC6BB48F20E62FF0BA50F /* CacheNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60728081D730D518ACE2B10486FBF147 /* CacheNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0F03A253A318C766AAEB69D80A48EE9D /* PBXContainerItemProxy */ = {
+		4F588EB003E3CDFF56B7B81B3FADFC18 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 3FBC9039DFBE5D9A2253CAF001341F7D;
 			remoteInfo = "Pods-RCToolKit_Example";
 		};
-		5B8C394A8E851677A704E218BA621962 /* PBXContainerItemProxy */ = {
+		6635CB89EBFD96D599F411C81B524914 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -55,56 +61,62 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		09D97F62170DFD8D8718584E26FBB5CD /* RCLinkedList.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RCLinkedList.swift; sourceTree = "<group>"; };
+		04C56132B9D4BF8698B47EF68E81D9B5 /* SafeArray.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SafeArray.swift; sourceTree = "<group>"; };
 		0B665C6E796F034A3DEA49B1471DCB5B /* Pods-RCToolKit_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RCToolKit_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		0B7331BABF990940342E0A1952BD6531 /* RCToolKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RCToolKit.debug.xcconfig; sourceTree = "<group>"; };
-		0D59F6063417707F42A7ABE7DB9C23AB /* RCToolKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RCToolKit-prefix.pch"; sourceTree = "<group>"; };
-		189E27042C535525892836B3CD06378E /* RCCacheManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RCCacheManager.swift; sourceTree = "<group>"; };
+		0E2E18BC19A6D773186B4C699E2BCEC1 /* Queue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
+		17590C4D8937A379397D46EBBD9A4B28 /* RCToolKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RCToolKit-prefix.pch"; sourceTree = "<group>"; };
 		1AFE14CEA281A812DC3C36F4F8AD1AB7 /* RCToolKit */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = RCToolKit; path = RCToolKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		25C9466644B69693E840D1126B9D0D46 /* Pods-RCToolKit_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-RCToolKit_Tests.modulemap"; sourceTree = "<group>"; };
+		2622AF0C99B74DAACEFB299A44798992 /* RCToolKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RCToolKit.debug.xcconfig; sourceTree = "<group>"; };
 		28C4A63C70003E4829D3F3CDA573726F /* Pods-RCToolKit_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RCToolKit_Tests-dummy.m"; sourceTree = "<group>"; };
 		2E24103337AE35D4C45BD066E081FDC9 /* Pods-RCToolKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RCToolKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		30EEAE5369FD86288769961D2352C04C /* SafeArray.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SafeArray.swift; sourceTree = "<group>"; };
-		311612666C6C124F294333E45B8578F7 /* RCWrapper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RCWrapper.swift; sourceTree = "<group>"; };
-		3206314AA433A613667AB13982634AAC /* LFUMemoryCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LFUMemoryCache.swift; sourceTree = "<group>"; };
-		4A034E7AB80FBBF256175F6681B0AC09 /* Queue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
-		5395603852BFBF550DD777A2BA76EA13 /* FIFOMemoryCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FIFOMemoryCache.swift; sourceTree = "<group>"; };
-		5398D60C3E57E37D9037D73811ABF853 /* UIAdatper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UIAdatper.swift; sourceTree = "<group>"; };
-		5DDF4DB43BD0238A62892D75F12B4ACE /* RCStack.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RCStack.swift; sourceTree = "<group>"; };
-		6B5A5DE2804FE367FB60F3EDC78B1714 /* FileMnager+Externsion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "FileMnager+Externsion.swift"; sourceTree = "<group>"; };
-		6DFC924133EF39B1394B9F30EB62C84A /* RCToolKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = RCToolKit.modulemap; sourceTree = "<group>"; };
-		6E536EAAE3A1FADA128E172215EE8228 /* RCToolKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "RCToolKit-Info.plist"; sourceTree = "<group>"; };
+		35DACE71BFDE05612DA970F94BF50CE9 /* LFUMemoryCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LFUMemoryCache.swift; sourceTree = "<group>"; };
+		37233265FE19A312F50F5F955DC48E80 /* RCToolKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RCToolKit.release.xcconfig; sourceTree = "<group>"; };
+		42A424B41B161E635793B2273441218A /* RCToolKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = RCToolKit.modulemap; sourceTree = "<group>"; };
+		466D8C28721828833F3A34DD0263AE81 /* DiskCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DiskCache.swift; sourceTree = "<group>"; };
+		4B1E8815BAE0A4E61EC8A43A4D863496 /* RCBaseCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RCBaseCache.swift; sourceTree = "<group>"; };
+		4F7C4F5132ECA21499A58F3D2C243AFA /* RCLinkedList.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RCLinkedList.swift; sourceTree = "<group>"; };
+		4F9B280EDE741642FDD54829F98BC86B /* FileMnager+Externsion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "FileMnager+Externsion.swift"; sourceTree = "<group>"; };
+		51D684E66A594BB72DFF496978308E6C /* BaseWarpper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BaseWarpper.swift; sourceTree = "<group>"; };
+		560BBC5E2B94BD97A2996C543349E726 /* RCToolKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "RCToolKit-Info.plist"; sourceTree = "<group>"; };
+		5D74CC9A3DD7BE1E92343A088B82A62A /* RCCacheManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RCCacheManager.swift; sourceTree = "<group>"; };
+		5DAFE92A10E5855EE678A33131CAA051 /* RCStack.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RCStack.swift; sourceTree = "<group>"; };
+		5E2FE6CCFA755F56B43AC96524DBDFDE /* UIView+Frame.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+Frame.swift"; sourceTree = "<group>"; };
+		60728081D730D518ACE2B10486FBF147 /* CacheNode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CacheNode.swift; sourceTree = "<group>"; };
+		6E30D5DFE93931DAAC05BCD87AAB4EF8 /* RCToolKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RCToolKit-dummy.m"; sourceTree = "<group>"; };
 		6F6141AC85DD3967514C1C5EF2E3B5BF /* Pods-RCToolKit_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RCToolKit_Tests-umbrella.h"; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		736B810C88F4E6977D19D49133562610 /* Pods-RCToolKit_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RCToolKit_Tests-Info.plist"; sourceTree = "<group>"; };
+		75CD5BE146C3C7AA513DDEB70EFD1BC6 /* RCLog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RCLog.swift; sourceTree = "<group>"; };
 		7DB71D564BBC89CCAAE607BD22031761 /* Pods-RCToolKit_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RCToolKit_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		81D89C5E4934D81B6F975D83AB57A5F1 /* RCToolKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = RCToolKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		7DD29EB7CAB94C7CDE92C1B3E25FA928 /* FIFOMemoryCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FIFOMemoryCache.swift; sourceTree = "<group>"; };
+		85BBFD9ECA996500A48AD98D1191BA9D /* RCToolKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = RCToolKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		89C6CB48560FA68E548A325A5D897373 /* Pods-RCToolKit_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RCToolKit_Example-dummy.m"; sourceTree = "<group>"; };
-		89E424E0DD6B51B0734AD14703591103 /* RCToolKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RCToolKit-umbrella.h"; sourceTree = "<group>"; };
-		8C1EE2B0858AF77144624377CDD79C0E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		8AD8496456A8922297BCD809CC81D730 /* RCLogItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RCLogItem.swift; sourceTree = "<group>"; };
 		8F948CC5A86EF3FAD2A44D8F58E2D098 /* Pods-RCToolKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RCToolKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		90C5E449FB8DF34FD2943D079DF2660D /* Pods-RCToolKit_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RCToolKit_Example-frameworks.sh"; sourceTree = "<group>"; };
+		94C43FC3954D8951D88926C682F689DA /* UIView+Animation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+Animation.swift"; sourceTree = "<group>"; };
 		98E176FADB9F94EEB499B8C64225A9DB /* Pods-RCToolKit_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-RCToolKit_Tests"; path = Pods_RCToolKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9E5570CEAFB60AEAA897AFA833A67E34 /* BaseWarpper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BaseWarpper.swift; sourceTree = "<group>"; };
-		9F2BF23CC3A6D6A065B4AAF5ECA75FD7 /* RCLog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RCLog.swift; sourceTree = "<group>"; };
-		A0CEFF3A26A4BA9AB4605DD005064EF1 /* LRUMemoryCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LRUMemoryCache.swift; sourceTree = "<group>"; };
-		A20E235E0590B8FF097F13B440F0E0C7 /* RCToolKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RCToolKit.release.xcconfig; sourceTree = "<group>"; };
-		AEA0370E39662B29BFD781C5C80F48E8 /* UIView+Animation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+Animation.swift"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A14FE04F7FFF487DAE2A12075A94E237 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		A9D8E85F8EB4E336C44E5C56EBA87788 /* UIView+CreateSubView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+CreateSubView.swift"; sourceTree = "<group>"; };
+		AF98D37429226DF71ABE9D8FF475A158 /* UIAdatper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UIAdatper.swift; sourceTree = "<group>"; };
+		B02DD838E5EC71D30EF64919EC5BD120 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B768288049726DBEC5631088E00A8314 /* Pods-RCToolKit_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RCToolKit_Example-umbrella.h"; sourceTree = "<group>"; };
 		BA561C1BC59E57DD8DEB8AFFD4720EEF /* Pods-RCToolKit_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RCToolKit_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		BEEB933828C98DEE00914A05 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		BEEB933A28C9927100914A05 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		BEEB933E28C9989000914A05 /* Any+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Any+Extension.swift"; sourceTree = "<group>"; };
+		BEEB934028C9E12000914A05 /* RCConsoleLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCConsoleLog.swift; sourceTree = "<group>"; };
+		BEEB934228C9E3F000914A05 /* RCDefaultFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCDefaultFormatter.swift; sourceTree = "<group>"; };
 		C2D6B6C3CDE7C10DF993B8E24958A66B /* Pods-RCToolKit_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RCToolKit_Example-Info.plist"; sourceTree = "<group>"; };
-		C433F2D37A2D177BFDE57152DEF414AD /* UIView+CreateSubView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+CreateSubView.swift"; sourceTree = "<group>"; };
-		D30054A068676A4CE4F85639163DAAEA /* RCToolKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RCToolKit-dummy.m"; sourceTree = "<group>"; };
-		D38D5E209AD90FB29CB4C6B67233763E /* RCBaseCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RCBaseCache.swift; sourceTree = "<group>"; };
-		D53648B5F70D380546051787BDFA1730 /* CacheNode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CacheNode.swift; sourceTree = "<group>"; };
+		C6DB7A14F259A81E9C3166660DDB4720 /* LRUMemoryCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LRUMemoryCache.swift; sourceTree = "<group>"; };
+		D89BC64648452E50ED2A96E620E5D59F /* RCWrapper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RCWrapper.swift; sourceTree = "<group>"; };
+		D957B1F7CAF84EA25C808443B6154D1A /* RCToolKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RCToolKit-umbrella.h"; sourceTree = "<group>"; };
 		DABE4F6B16C40908B309B304351AE935 /* Pods-RCToolKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RCToolKit_Example.release.xcconfig"; sourceTree = "<group>"; };
 		DDDF4C899B091C0287758652F3274639 /* Pods-RCToolKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RCToolKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		DFAF0BC788000CBCBBBAE22987A98B03 /* Pods-RCToolKit_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RCToolKit_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		E790A09D073B3BAAF687F2934516D43E /* DiskCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DiskCache.swift; sourceTree = "<group>"; };
 		E7B58D14257ACAB204DA69514F794D4F /* Pods-RCToolKit_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-RCToolKit_Example.modulemap"; sourceTree = "<group>"; };
-		E9F636812F44D2D84C50BF98D2019AE1 /* UIView+Frame.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+Frame.swift"; sourceTree = "<group>"; };
-		F22752FA1B6C85029EFA42C2685E8F2C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		FF75245FA6BE6450519EE6F8E6C75CE1 /* Pods-RCToolKit_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-RCToolKit_Example"; path = Pods_RCToolKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -117,19 +129,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AEBC1AA3B4EE28DF117035F2CD0E53A3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A15CCF592F0871322253D604430E6827 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E2413E2443D2D5BEB5AC0160E423D178 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				76D61D6FD8E2A61001104944CB1AB9C5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FEA44CC34215F552E34C0F0B13628D10 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D3D936A8DB8A2DC13FBB5BE46CE66EC /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,6 +165,23 @@
 			path = "Target Support Files/Pods-RCToolKit_Example";
 			sourceTree = "<group>";
 		};
+		13330E552A41FFED49DEDA3523A7F1E2 /* RCToolKit */ = {
+			isa = PBXGroup;
+			children = (
+				A514899AB79FD4821FDCE7D333BA71DF /* base */,
+				7DE8615CD8616FC0A0692E3705DDFCAE /* Cache */,
+				7E30FA301E52DB21BFED3D1F5414D95C /* DataStructure */,
+				678B6B49DB49E597A197A9F06A26A63B /* Foundation */,
+				2D84EF508FFB0E04D4CAC0C2D8A637B0 /* Log */,
+				FD35D69523CBCF14247B44CC7276161B /* Pod */,
+				2C0BF93C8C72328BB2D6F04C4BAC4DA0 /* Support Files */,
+				9A850D23DB4AE2CE75345A7F06E5C674 /* UIKit */,
+				61EEC28C10C7C5B9003318794A372283 /* Wrapper */,
+			);
+			name = RCToolKit;
+			path = ../..;
+			sourceTree = "<group>";
+		};
 		16217F0C7FA286729CE3062BB3BFEAB8 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,79 +191,41 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		19A777BFBF025CD0F7FDE888B2EC9CB7 /* base */ = {
+		2C0BF93C8C72328BB2D6F04C4BAC4DA0 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				9E5570CEAFB60AEAA897AFA833A67E34 /* BaseWarpper.swift */,
-			);
-			name = base;
-			path = RCToolKit/Classes/base;
-			sourceTree = "<group>";
-		};
-		25AB7BD53A372D0A95FC39BE53F795F5 /* MomoryCache */ = {
-			isa = PBXGroup;
-			children = (
-				5395603852BFBF550DD777A2BA76EA13 /* FIFOMemoryCache.swift */,
-				3206314AA433A613667AB13982634AAC /* LFUMemoryCache.swift */,
-				A0CEFF3A26A4BA9AB4605DD005064EF1 /* LRUMemoryCache.swift */,
-			);
-			name = MomoryCache;
-			path = MomoryCache;
-			sourceTree = "<group>";
-		};
-		2F3CDAFC32729BD549A6A7A83F7F02E0 /* Log */ = {
-			isa = PBXGroup;
-			children = (
-				9F2BF23CC3A6D6A065B4AAF5ECA75FD7 /* RCLog.swift */,
-			);
-			name = Log;
-			path = RCToolKit/Classes/Log;
-			sourceTree = "<group>";
-		};
-		31FF64A81C2B28FCC7E158961C980E99 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				6DFC924133EF39B1394B9F30EB62C84A /* RCToolKit.modulemap */,
-				D30054A068676A4CE4F85639163DAAEA /* RCToolKit-dummy.m */,
-				6E536EAAE3A1FADA128E172215EE8228 /* RCToolKit-Info.plist */,
-				0D59F6063417707F42A7ABE7DB9C23AB /* RCToolKit-prefix.pch */,
-				89E424E0DD6B51B0734AD14703591103 /* RCToolKit-umbrella.h */,
-				0B7331BABF990940342E0A1952BD6531 /* RCToolKit.debug.xcconfig */,
-				A20E235E0590B8FF097F13B440F0E0C7 /* RCToolKit.release.xcconfig */,
+				42A424B41B161E635793B2273441218A /* RCToolKit.modulemap */,
+				6E30D5DFE93931DAAC05BCD87AAB4EF8 /* RCToolKit-dummy.m */,
+				560BBC5E2B94BD97A2996C543349E726 /* RCToolKit-Info.plist */,
+				17590C4D8937A379397D46EBBD9A4B28 /* RCToolKit-prefix.pch */,
+				D957B1F7CAF84EA25C808443B6154D1A /* RCToolKit-umbrella.h */,
+				2622AF0C99B74DAACEFB299A44798992 /* RCToolKit.debug.xcconfig */,
+				37233265FE19A312F50F5F955DC48E80 /* RCToolKit.release.xcconfig */,
 			);
 			name = "Support Files";
 			path = "Example/Pods/Target Support Files/RCToolKit";
 			sourceTree = "<group>";
 		};
-		3A895F979E34D68677E794A0542A0398 /* Foundation */ = {
+		2D84EF508FFB0E04D4CAC0C2D8A637B0 /* Log */ = {
 			isa = PBXGroup;
 			children = (
-				707DE108B3335FB2FD1E9252B1BBE681 /* Array */,
-				3E09AFC875D04BE8099492856AF4F431 /* FileManager */,
+				75CD5BE146C3C7AA513DDEB70EFD1BC6 /* RCLog.swift */,
+				BEEB934028C9E12000914A05 /* RCConsoleLog.swift */,
+				8AD8496456A8922297BCD809CC81D730 /* RCLogItem.swift */,
+				BEEB934228C9E3F000914A05 /* RCDefaultFormatter.swift */,
 			);
-			name = Foundation;
-			path = RCToolKit/Classes/Foundation;
+			name = Log;
+			path = RCToolKit/Classes/Log;
 			sourceTree = "<group>";
 		};
-		3AEB070FBE4C0BB1FFE12704B08C9819 /* UIKit */ = {
+		42675B50BDF8391E781BCCB24CEA09EE /* MomoryCache */ = {
 			isa = PBXGroup;
 			children = (
-				5398D60C3E57E37D9037D73811ABF853 /* UIAdatper.swift */,
-				AEA0370E39662B29BFD781C5C80F48E8 /* UIView+Animation.swift */,
-				C433F2D37A2D177BFDE57152DEF414AD /* UIView+CreateSubView.swift */,
-				E9F636812F44D2D84C50BF98D2019AE1 /* UIView+Frame.swift */,
+				7DD29EB7CAB94C7CDE92C1B3E25FA928 /* FIFOMemoryCache.swift */,
+				35DACE71BFDE05612DA970F94BF50CE9 /* LFUMemoryCache.swift */,
+				C6DB7A14F259A81E9C3166660DDB4720 /* LRUMemoryCache.swift */,
 			);
-			name = UIKit;
-			path = RCToolKit/Classes/UIKit;
-			sourceTree = "<group>";
-		};
-		3E09AFC875D04BE8099492856AF4F431 /* FileManager */ = {
-			isa = PBXGroup;
-			children = (
-				6B5A5DE2804FE367FB60F3EDC78B1714 /* FileMnager+Externsion.swift */,
-			);
-			name = FileManager;
-			path = FileManager;
+			path = MomoryCache;
 			sourceTree = "<group>";
 		};
 		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
@@ -245,23 +236,86 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		707DE108B3335FB2FD1E9252B1BBE681 /* Array */ = {
+		61EEC28C10C7C5B9003318794A372283 /* Wrapper */ = {
 			isa = PBXGroup;
 			children = (
-				30EEAE5369FD86288769961D2352C04C /* SafeArray.swift */,
+				D89BC64648452E50ED2A96E620E5D59F /* RCWrapper.swift */,
 			);
-			name = Array;
-			path = Array;
+			name = Wrapper;
+			path = RCToolKit/Classes/Wrapper;
 			sourceTree = "<group>";
 		};
-		922976D6CB88F9334DB9D9450413A956 /* Pod */ = {
+		678B6B49DB49E597A197A9F06A26A63B /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				F22752FA1B6C85029EFA42C2685E8F2C /* LICENSE */,
-				81D89C5E4934D81B6F975D83AB57A5F1 /* RCToolKit.podspec */,
-				8C1EE2B0858AF77144624377CDD79C0E /* README.md */,
+				D9C1C4D723D78D0AD20D8D783B05561B /* Array */,
+				736056ED989A987A30A5B6B09BED02D0 /* Extension */,
+				DF8F018B3F0AF1F0002A4BC29DD0547E /* FileManager */,
 			);
-			name = Pod;
+			name = Foundation;
+			path = RCToolKit/Classes/Foundation;
+			sourceTree = "<group>";
+		};
+		6D2D43683BBD035E17556529F379DE17 /* DiskCache */ = {
+			isa = PBXGroup;
+			children = (
+				466D8C28721828833F3A34DD0263AE81 /* DiskCache.swift */,
+			);
+			path = DiskCache;
+			sourceTree = "<group>";
+		};
+		736056ED989A987A30A5B6B09BED02D0 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				BEEB933828C98DEE00914A05 /* String+Extension.swift */,
+				BEEB933A28C9927100914A05 /* Date+Extension.swift */,
+				BEEB933E28C9989000914A05 /* Any+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		7DE8615CD8616FC0A0692E3705DDFCAE /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				4B1E8815BAE0A4E61EC8A43A4D863496 /* RCBaseCache.swift */,
+				5D74CC9A3DD7BE1E92343A088B82A62A /* RCCacheManager.swift */,
+				82148EAD7EBC16EA1E922D616E452672 /* CacheNode */,
+				6D2D43683BBD035E17556529F379DE17 /* DiskCache */,
+				42675B50BDF8391E781BCCB24CEA09EE /* MomoryCache */,
+			);
+			name = Cache;
+			path = RCToolKit/Classes/Cache;
+			sourceTree = "<group>";
+		};
+		7E30FA301E52DB21BFED3D1F5414D95C /* DataStructure */ = {
+			isa = PBXGroup;
+			children = (
+				0E2E18BC19A6D773186B4C699E2BCEC1 /* Queue.swift */,
+				4F7C4F5132ECA21499A58F3D2C243AFA /* RCLinkedList.swift */,
+				5DAFE92A10E5855EE678A33131CAA051 /* RCStack.swift */,
+			);
+			name = DataStructure;
+			path = RCToolKit/Classes/DataStructure;
+			sourceTree = "<group>";
+		};
+		82148EAD7EBC16EA1E922D616E452672 /* CacheNode */ = {
+			isa = PBXGroup;
+			children = (
+				60728081D730D518ACE2B10486FBF147 /* CacheNode.swift */,
+			);
+			path = CacheNode;
+			sourceTree = "<group>";
+		};
+		9A850D23DB4AE2CE75345A7F06E5C674 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				AF98D37429226DF71ABE9D8FF475A158 /* UIAdatper.swift */,
+				94C43FC3954D8951D88926C682F689DA /* UIView+Animation.swift */,
+				A9D8E85F8EB4E336C44E5C56EBA87788 /* UIView+CreateSubView.swift */,
+				5E2FE6CCFA755F56B43AC96524DBDFDE /* UIView+Frame.swift */,
+			);
+			name = UIKit;
+			path = RCToolKit/Classes/UIKit;
 			sourceTree = "<group>";
 		};
 		A10ACB12045EE3348D27E7B77763C44E /* Pods-RCToolKit_Tests */ = {
@@ -280,32 +334,13 @@
 			path = "Target Support Files/Pods-RCToolKit_Tests";
 			sourceTree = "<group>";
 		};
-		AFC0E71B47E63D053A04130AAAB0C48A /* DataStructure */ = {
+		A514899AB79FD4821FDCE7D333BA71DF /* base */ = {
 			isa = PBXGroup;
 			children = (
-				4A034E7AB80FBBF256175F6681B0AC09 /* Queue.swift */,
-				09D97F62170DFD8D8718584E26FBB5CD /* RCLinkedList.swift */,
-				5DDF4DB43BD0238A62892D75F12B4ACE /* RCStack.swift */,
+				51D684E66A594BB72DFF496978308E6C /* BaseWarpper.swift */,
 			);
-			name = DataStructure;
-			path = RCToolKit/Classes/DataStructure;
-			sourceTree = "<group>";
-		};
-		B1BD8B7CBB2A5E4ADC32020C408689C6 /* RCToolKit */ = {
-			isa = PBXGroup;
-			children = (
-				19A777BFBF025CD0F7FDE888B2EC9CB7 /* base */,
-				D1E69629822BBA3DCF8A36D95930F332 /* Cache */,
-				AFC0E71B47E63D053A04130AAAB0C48A /* DataStructure */,
-				3A895F979E34D68677E794A0542A0398 /* Foundation */,
-				2F3CDAFC32729BD549A6A7A83F7F02E0 /* Log */,
-				922976D6CB88F9334DB9D9450413A956 /* Pod */,
-				31FF64A81C2B28FCC7E158961C980E99 /* Support Files */,
-				3AEB070FBE4C0BB1FFE12704B08C9819 /* UIKit */,
-				E3537F556AD48E4DA90EFCBD78A7C7DA /* Wrapper */,
-			);
-			name = RCToolKit;
-			path = ../..;
+			name = base;
+			path = RCToolKit/Classes/base;
 			sourceTree = "<group>";
 		};
 		B39A5B4E37498917FF0FA9AF3A41BE3F /* Products */ = {
@@ -316,15 +351,6 @@
 				1AFE14CEA281A812DC3C36F4F8AD1AB7 /* RCToolKit */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		B56D2BCF555A4978839366BEC61BCEC6 /* DiskCache */ = {
-			isa = PBXGroup;
-			children = (
-				E790A09D073B3BAAF687F2934516D43E /* DiskCache.swift */,
-			);
-			name = DiskCache;
-			path = DiskCache;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -338,19 +364,6 @@
 			);
 			sourceTree = "<group>";
 		};
-		D1E69629822BBA3DCF8A36D95930F332 /* Cache */ = {
-			isa = PBXGroup;
-			children = (
-				D38D5E209AD90FB29CB4C6B67233763E /* RCBaseCache.swift */,
-				189E27042C535525892836B3CD06378E /* RCCacheManager.swift */,
-				F7CEBF3457148718FCAC2D1E3FCB85F4 /* CacheNode */,
-				B56D2BCF555A4978839366BEC61BCEC6 /* DiskCache */,
-				25AB7BD53A372D0A95FC39BE53F795F5 /* MomoryCache */,
-			);
-			name = Cache;
-			path = RCToolKit/Classes/Cache;
-			sourceTree = "<group>";
-		};
 		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -359,40 +372,48 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E3537F556AD48E4DA90EFCBD78A7C7DA /* Wrapper */ = {
+		D9C1C4D723D78D0AD20D8D783B05561B /* Array */ = {
 			isa = PBXGroup;
 			children = (
-				311612666C6C124F294333E45B8578F7 /* RCWrapper.swift */,
+				04C56132B9D4BF8698B47EF68E81D9B5 /* SafeArray.swift */,
 			);
-			name = Wrapper;
-			path = RCToolKit/Classes/Wrapper;
+			path = Array;
+			sourceTree = "<group>";
+		};
+		DF8F018B3F0AF1F0002A4BC29DD0547E /* FileManager */ = {
+			isa = PBXGroup;
+			children = (
+				4F9B280EDE741642FDD54829F98BC86B /* FileMnager+Externsion.swift */,
+			);
+			path = FileManager;
 			sourceTree = "<group>";
 		};
 		F22C570D182F0A92FEA2322EA8021005 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B1BD8B7CBB2A5E4ADC32020C408689C6 /* RCToolKit */,
+				13330E552A41FFED49DEDA3523A7F1E2 /* RCToolKit */,
 			);
 			name = "Development Pods";
 			sourceTree = "<group>";
 		};
-		F7CEBF3457148718FCAC2D1E3FCB85F4 /* CacheNode */ = {
+		FD35D69523CBCF14247B44CC7276161B /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				D53648B5F70D380546051787BDFA1730 /* CacheNode.swift */,
+				A14FE04F7FFF487DAE2A12075A94E237 /* LICENSE */,
+				85BBFD9ECA996500A48AD98D1191BA9D /* RCToolKit.podspec */,
+				B02DD838E5EC71D30EF64919EC5BD120 /* README.md */,
 			);
-			name = CacheNode;
-			path = CacheNode;
+			name = Pod;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		2932CC0EA45D03233D92CA47F769D1BF /* Headers */ = {
+		3B8847DD367CDC8AFCA403680E41C506 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F12E8A013031EB7817F16579C9BECEC0 /* RCToolKit-umbrella.h in Headers */,
+				13D05B07B9BE38C67B03197CD69E2AA8 /* RCToolKit-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,12 +438,12 @@
 /* Begin PBXNativeTarget section */
 		1BAB3883A84DB3CB18E554F95DF79F5C /* RCToolKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AAFDB6390D3378923FCB0191F09347A3 /* Build configuration list for PBXNativeTarget "RCToolKit" */;
+			buildConfigurationList = 0712120CCC237D464A9A2C2AE7203F7E /* Build configuration list for PBXNativeTarget "RCToolKit" */;
 			buildPhases = (
-				2932CC0EA45D03233D92CA47F769D1BF /* Headers */,
-				935301D119DEA7AE768CDBD9F36F1CDE /* Sources */,
-				AEBC1AA3B4EE28DF117035F2CD0E53A3 /* Frameworks */,
-				E8645FB0A93CC47B18FAABDD1DC9900E /* Resources */,
+				3B8847DD367CDC8AFCA403680E41C506 /* Headers */,
+				F3876FA8F5923A244DAAEC8337D67E83 /* Sources */,
+				FEA44CC34215F552E34C0F0B13628D10 /* Frameworks */,
+				BA47AFD84A955097B0766AE6C27CB280 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -445,7 +466,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				61738DE8CE64DB1E212AB12880146A73 /* PBXTargetDependency */,
+				71C5D75BB0FC8B9EF66434C927085FEE /* PBXTargetDependency */,
 			);
 			name = "Pods-RCToolKit_Example";
 			productName = Pods_RCToolKit_Example;
@@ -464,7 +485,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				6BD2AD019F51EB9D75298B008F4C8CC8 /* PBXTargetDependency */,
+				CF0BDAF08B14E1C044AF5A402A66B386 /* PBXTargetDependency */,
 			);
 			name = "Pods-RCToolKit_Tests";
 			productName = Pods_RCToolKit_Tests;
@@ -508,7 +529,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E8645FB0A93CC47B18FAABDD1DC9900E /* Resources */ = {
+		BA47AFD84A955097B0766AE6C27CB280 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -533,30 +554,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		935301D119DEA7AE768CDBD9F36F1CDE /* Sources */ = {
+		F3876FA8F5923A244DAAEC8337D67E83 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70C4F0D1190DE31834B50525F58AF2D6 /* BaseWarpper.swift in Sources */,
-				5EFE815B41E535275C396725F289F268 /* CacheNode.swift in Sources */,
-				9EF37891C9B1829AF5EB06C6AF4847B5 /* DiskCache.swift in Sources */,
-				C6D98D7145037942B539CF0BDF557E46 /* FIFOMemoryCache.swift in Sources */,
-				92354F3B9D37BED4F5421D9CEE3547CB /* FileMnager+Externsion.swift in Sources */,
-				178A1C7C9E9E8B1DEEF07CF2E9254341 /* LFUMemoryCache.swift in Sources */,
-				7D79B7D7E4F886AC08527601DD5979A2 /* LRUMemoryCache.swift in Sources */,
-				AB29123C0815830D5794C1AAE9233EF3 /* Queue.swift in Sources */,
-				1FFDCE998877B1CC48FCAA41707F5FEB /* RCBaseCache.swift in Sources */,
-				9E3543469EDD377C2A9832B1BDE1EBCE /* RCCacheManager.swift in Sources */,
-				9D52A4F39CED8F2BFE6A256E659997F6 /* RCLinkedList.swift in Sources */,
-				16596474ECD9DEA227618970F923F17E /* RCLog.swift in Sources */,
-				F26FD1C228475F1FB5D5E36FBFC7AE33 /* RCStack.swift in Sources */,
-				B30FC994F14C63E59DE57DEC2475D7CC /* RCToolKit-dummy.m in Sources */,
-				AE599A6FB2680B0337CAAA74CD7AE483 /* RCWrapper.swift in Sources */,
-				62FC06D6772801C208E204FF86F9BBD6 /* SafeArray.swift in Sources */,
-				38BC31603A3BEC91568053282B1216F1 /* UIAdatper.swift in Sources */,
-				87BCE68748DAFAC8A4750F33C5AC854F /* UIView+Animation.swift in Sources */,
-				AE36848C73BB208AC6DAB4777048E400 /* UIView+CreateSubView.swift in Sources */,
-				6BB55E2DA0327FBFCC6D6BB0D0841377 /* UIView+Frame.swift in Sources */,
+				930E3C9AC7CF8A2337E4A8C4C49C3C08 /* BaseWarpper.swift in Sources */,
+				FAE5302AD0DBC6BB48F20E62FF0BA50F /* CacheNode.swift in Sources */,
+				4F900E165AFE968A3F3D314F9B958A5D /* DiskCache.swift in Sources */,
+				637A2856F0F8D2762DC0B2C8104A96CD /* FIFOMemoryCache.swift in Sources */,
+				835F677337E67029CC6AF4C35724EAAB /* FileMnager+Externsion.swift in Sources */,
+				934B81A72043B2696FC390898C911F81 /* LFUMemoryCache.swift in Sources */,
+				BEEB933B28C9927100914A05 /* Date+Extension.swift in Sources */,
+				D0A49D587D80501FEA564B1AF8FB106D /* LRUMemoryCache.swift in Sources */,
+				A62260A83E2E45511C4B6A76B19A59F3 /* Queue.swift in Sources */,
+				C9EC6A564332F86A82C857F0E970FEA8 /* RCBaseCache.swift in Sources */,
+				08C2F1F652A490C4822AB5DBF8551CF5 /* RCCacheManager.swift in Sources */,
+				4A85AD9F2DF2843533F1202520279F47 /* RCLinkedList.swift in Sources */,
+				BEEB933928C98DEE00914A05 /* String+Extension.swift in Sources */,
+				C4231F57A0A9E9EF287CCF68BAEBADDD /* RCLog.swift in Sources */,
+				DFA02B7E8712963A003223C2F4EF91A0 /* RCLogItem.swift in Sources */,
+				BEEB934128C9E12000914A05 /* RCConsoleLog.swift in Sources */,
+				4E099399A8A3541B172E48EA515E5668 /* RCStack.swift in Sources */,
+				E1517B5EF0C84CBBEF397AA1ECF01498 /* RCToolKit-dummy.m in Sources */,
+				B97C76140BF26B9B5DC55777435C6FA1 /* RCWrapper.swift in Sources */,
+				2F254D9F2CFFD99168535C2D953B7CE1 /* SafeArray.swift in Sources */,
+				535BCAC4978545089775BDE7036570B3 /* UIAdatper.swift in Sources */,
+				AF84AF5F1895F61AA800A93000342201 /* UIView+Animation.swift in Sources */,
+				5A4D1492AFB8583A43BDAE3843FC0719 /* UIView+CreateSubView.swift in Sources */,
+				BEEB933F28C9989000914A05 /* Any+Extension.swift in Sources */,
+				C7AAA96A24D53F897FB40485175BBA36 /* UIView+Frame.swift in Sources */,
+				BEEB934328C9E3F000914A05 /* RCDefaultFormatter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -571,17 +598,17 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		61738DE8CE64DB1E212AB12880146A73 /* PBXTargetDependency */ = {
+		71C5D75BB0FC8B9EF66434C927085FEE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = RCToolKit;
 			target = 1BAB3883A84DB3CB18E554F95DF79F5C /* RCToolKit */;
-			targetProxy = 5B8C394A8E851677A704E218BA621962 /* PBXContainerItemProxy */;
+			targetProxy = 6635CB89EBFD96D599F411C81B524914 /* PBXContainerItemProxy */;
 		};
-		6BD2AD019F51EB9D75298B008F4C8CC8 /* PBXTargetDependency */ = {
+		CF0BDAF08B14E1C044AF5A402A66B386 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-RCToolKit_Example";
 			target = 3FBC9039DFBE5D9A2253CAF001341F7D /* Pods-RCToolKit_Example */;
-			targetProxy = 0F03A253A318C766AAEB69D80A48EE9D /* PBXContainerItemProxy */;
+			targetProxy = 4F588EB003E3CDFF56B7B81B3FADFC18 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -687,37 +714,6 @@
 			};
 			name = Release;
 		};
-		6E182FEABC42750DC77131308260F3BA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0B7331BABF990940342E0A1952BD6531 /* RCToolKit.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/RCToolKit/RCToolKit-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/RCToolKit/RCToolKit-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/RCToolKit/RCToolKit.modulemap";
-				PRODUCT_MODULE_NAME = RCToolKit;
-				PRODUCT_NAME = RCToolKit;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		7EE7A78859F657F6BEFC651185B43192 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -773,8 +769,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
@@ -813,9 +808,40 @@
 			};
 			name = Debug;
 		};
-		A6E166981C1493A66301C83125A6B32D /* Release */ = {
+		851616F78DF2F11CD368287F31563899 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A20E235E0590B8FF097F13B440F0E0C7 /* RCToolKit.release.xcconfig */;
+			baseConfigurationReference = 2622AF0C99B74DAACEFB299A44798992 /* RCToolKit.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/RCToolKit/RCToolKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RCToolKit/RCToolKit-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/RCToolKit/RCToolKit.modulemap";
+				PRODUCT_MODULE_NAME = RCToolKit;
+				PRODUCT_NAME = RCToolKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		AA2AF89404B0DB43B5A72147C3BD0663 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 37233265FE19A312F50F5F955DC48E80 /* RCToolKit.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -914,6 +940,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0712120CCC237D464A9A2C2AE7203F7E /* Build configuration list for PBXNativeTarget "RCToolKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				851616F78DF2F11CD368287F31563899 /* Debug */,
+				AA2AF89404B0DB43B5A72147C3BD0663 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -937,15 +972,6 @@
 			buildConfigurations = (
 				26FA9C63E31F802745AD962C9F2802FD /* Debug */,
 				33F275DDF3B8FF05782E337E571DB853 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		AAFDB6390D3378923FCB0191F09347A3 /* Build configuration list for PBXNativeTarget "RCToolKit" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6E182FEABC42750DC77131308260F3BA /* Debug */,
-				A6E166981C1493A66301C83125A6B32D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
