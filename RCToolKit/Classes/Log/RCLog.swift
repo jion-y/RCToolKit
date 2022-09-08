@@ -46,7 +46,7 @@ public class RCLog {
     private let logQueue = DispatchQueue(label: logQueueName, qos: .default)
     public let loggers: ThreadSafeArray<RCLogNode> = ThreadSafeArray()
     private static let logQueueName: String = "com.rc.logger"
-    private var timeLogMap: [String: UInt64] = Dictionary()
+    private var timeLogMap: SafeDictionary<String,UInt64> = SafeDictionary()
 }
 
 public extension RCLog {

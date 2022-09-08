@@ -6,7 +6,7 @@
 //
 
 import Foundation
-public class RCFileLog {
+public class RCFileLog:NSObject {
     private var fomatter_:logFomatreralbel?
 }
 extension RCFileLog:LogOutputable {
@@ -14,7 +14,7 @@ extension RCFileLog:LogOutputable {
         get {
             guard let fmatter = fomatter_ else {
                 fomatter_ = RCDefaultFormatter.default
-                return self.formatter!
+                return fomatter_!
             }
             return fmatter;
         }

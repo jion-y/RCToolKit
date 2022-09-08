@@ -34,6 +34,7 @@
 		B90C8E05304F1AFAC1AD2203E3FCDBC2 /* Pods-RCToolKit_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C4A63C70003E4829D3F3CDA573726F /* Pods-RCToolKit_Tests-dummy.m */; };
 		BC2405ED98AC4C8A7F7DBE493513D624 /* FileMnager+Externsion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D00B536D15FAAD99D6B2B4933FC69A /* FileMnager+Externsion.swift */; };
 		BEADE68528CA02D50041C1F1 /* RCFileLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEADE68428CA02D50041C1F1 /* RCFileLog.swift */; };
+		BEADE68928CA06430041C1F1 /* SafeDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEADE68828CA06430041C1F1 /* SafeDictionary.swift */; };
 		C39D80438B914CA007564F512689A978 /* RCDefaultFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384BF863686CB0EEFC46B670551DE40D /* RCDefaultFormatter.swift */; };
 		C4B0E829628A1DC6A8A2259B3F336669 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733567CDB201068D7118203844B052C9 /* Queue.swift */; };
 		C6041FAFF5210A36F4FE8F7D790011F0 /* Any+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A00697A5CB12481F098DFFEF72FC22 /* Any+Extension.swift */; };
@@ -111,6 +112,7 @@
 		BA561C1BC59E57DD8DEB8AFFD4720EEF /* Pods-RCToolKit_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RCToolKit_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		BAEDD6D1199EE67554E4DD39E874987D /* CacheNode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CacheNode.swift; sourceTree = "<group>"; };
 		BEADE68428CA02D50041C1F1 /* RCFileLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCFileLog.swift; sourceTree = "<group>"; };
+		BEADE68828CA06430041C1F1 /* SafeDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeDictionary.swift; sourceTree = "<group>"; };
 		C2D6B6C3CDE7C10DF993B8E24958A66B /* Pods-RCToolKit_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RCToolKit_Example-Info.plist"; sourceTree = "<group>"; };
 		CC484CFE5A3F527787DC7B0B8E16A18E /* RCStack.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RCStack.swift; sourceTree = "<group>"; };
 		D4C571ACF6BAB7309DE501FE8B920BB1 /* RCToolKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = RCToolKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -221,6 +223,7 @@
 		4ADE809AD32C28260AA934A5788967F2 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				BEADE68728CA06350041C1F1 /* Dictonary */,
 				9861458D8E3F6E1180092F760DAD57D6 /* Array */,
 				E973B793AA016EB7C3B229CE2A6CB641 /* Extension */,
 				44E4CF6FC17A00953E38D6ECE82737F8 /* FileManager */,
@@ -330,6 +333,14 @@
 				4EADD8B4324D238ECD9AD11C5830ED4C /* iOS */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BEADE68728CA06350041C1F1 /* Dictonary */ = {
+			isa = PBXGroup;
+			children = (
+				BEADE68828CA06430041C1F1 /* SafeDictionary.swift */,
+			);
+			path = Dictonary;
 			sourceTree = "<group>";
 		};
 		C44C7A076F11C89132140163AD89924B /* Pod */ = {
@@ -597,6 +608,7 @@
 				436DD582332086CFD3538E6D2F425EC6 /* SafeArray.swift in Sources */,
 				818058AD32E2C08C94D28EF6FF658F69 /* String+Extension.swift in Sources */,
 				75EBA2ED7D23BB06C33520BCF0DC65F0 /* UIAdatper.swift in Sources */,
+				BEADE68928CA06430041C1F1 /* SafeDictionary.swift in Sources */,
 				183391FDE3326C91437C5A93C1FCEFBF /* UIView+Animation.swift in Sources */,
 				614115B8EEDD4BFCCC20AC4E33FDA2B9 /* UIView+CreateSubView.swift in Sources */,
 				FE9D4C60BD6AACAC4E28E90790D66E6F /* UIView+Frame.swift in Sources */,

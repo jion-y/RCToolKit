@@ -19,7 +19,7 @@ extension RCConsoleLog:LogOutputable {
         get {
             guard let fmatter = fomatter_ else {
                 fomatter_ = RCDefaultFormatter.default
-                return self.formatter!
+                return fomatter_!
             }
             return fmatter;
         }
