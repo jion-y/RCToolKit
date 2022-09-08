@@ -16,14 +16,18 @@ public struct RCDefaultFormatter {
 extension RCDefaultFormatter:logFomatreralbel {
     public func formatter(_ msg: RCLogMessage) ->String {
         var logStr = String.rc.empty
+//#if !canImport(OSLog)
         logStr += "[\(self.formatter.string(from: msg.date))] "
+//#endif
         logStr += "[" + msg.type.des + "]"
         if !msg.queueLabel.isEmpty {
             logStr += "[" + msg.queueLabel + "]"
         }
+//#if !canImport(OSLog)
         if !msg.threadId.isEmpty {
             logStr += "[" + msg.threadId + "]"
         }
+//#endif
         let url = URL(fileURLWithPath: msg.file)
         let fileName = url.lastPathComponent
         logStr += "[" + fileName + "]" + "[LINE: " + msg.line + "] "

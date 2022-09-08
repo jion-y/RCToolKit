@@ -6,10 +6,13 @@
 //
 
 import Foundation
+#if canImport(OSLog)
+import OSLog
+#endif
 public class RCConsoleLog:NSObject {
     private var fomatter_:logFomatreralbel?
-    
 }
+@available(iOS 13.0, *)
 extension RCConsoleLog:LogOutputAble {
     
     public var formatter: logFomatreralbel? {
@@ -26,8 +29,13 @@ extension RCConsoleLog:LogOutputAble {
     }
     
     public func logMessage(msg: RCLogMessage) {
-        print(self.formatter?.formatter(msg) ?? String.rc.empty)
+        
+        let log = self.formatter?.formatter(msg) ?? String.rc.empty
+//#if canImport(OSLog)
+//        os_log("%@", log: .default, type: .info, log)
+//#else
+        print(log)
+//#endif
+  
     }
-    
-    
 }
