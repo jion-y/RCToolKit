@@ -36,7 +36,7 @@ public protocol logFomatreralbel {
     func formatter(_ msg: RCLogMessage) -> String
 }
 
-public protocol LogOutputAble: NSObject {
+public protocol LogOutputable: NSObject {
     var formatter: logFomatreralbel? { get set }
     func logMessage(msg: RCLogMessage)
 }
@@ -50,11 +50,11 @@ public class RCLog {
 }
 
 public extension RCLog {
-    static func addLogger(logger: LogOutputAble) {
+    static func addLogger(logger: LogOutputable) {
         RCLog.default.addLogger(logger: logger, level: .all)
     }
 
-    static func removeLogger(logger: LogOutputAble) {
+    static func removeLogger(logger: LogOutputable) {
         RCLog.default.removeLogger(logger: logger)
     }
 
@@ -166,7 +166,7 @@ public extension RCLog {
         }
     }
 
-    func addLogger(logger: LogOutputAble, level: LogLevel) {
+    func addLogger(logger: LogOutputable, level: LogLevel) {
         self.loggers.forEach { node in
             if logger == node.logger, node.level == level {
                 return
@@ -176,7 +176,7 @@ public extension RCLog {
         self.loggers.append(node)
     }
 
-    func removeLogger(logger: LogOutputAble) {
+    func removeLogger(logger: LogOutputable) {
         var node: RCLogNode?
         var index: Int = -1
         self.loggers.forEach { n in
@@ -194,10 +194,10 @@ public extension RCLog {
 }
 
 public class RCLogNode {
-    public var logger: LogOutputAble
+    public var logger: LogOutputable
     public var level: LogLevel = .off
     public var loggerQueue: DispatchQueue = .main
-    init(level: LogLevel, logger: LogOutputAble, queue: DispatchQueue) {
+    init(level: LogLevel, logger: LogOutputable, queue: DispatchQueue) {
         self.logger = logger
         self.level = level
         self.loggerQueue = queue

@@ -33,6 +33,7 @@
 		B7D713AD411AABD1839D2660560C6461 /* CacheNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEDD6D1199EE67554E4DD39E874987D /* CacheNode.swift */; };
 		B90C8E05304F1AFAC1AD2203E3FCDBC2 /* Pods-RCToolKit_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C4A63C70003E4829D3F3CDA573726F /* Pods-RCToolKit_Tests-dummy.m */; };
 		BC2405ED98AC4C8A7F7DBE493513D624 /* FileMnager+Externsion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D00B536D15FAAD99D6B2B4933FC69A /* FileMnager+Externsion.swift */; };
+		BEADE68528CA02D50041C1F1 /* RCFileLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEADE68428CA02D50041C1F1 /* RCFileLog.swift */; };
 		C39D80438B914CA007564F512689A978 /* RCDefaultFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384BF863686CB0EEFC46B670551DE40D /* RCDefaultFormatter.swift */; };
 		C4B0E829628A1DC6A8A2259B3F336669 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733567CDB201068D7118203844B052C9 /* Queue.swift */; };
 		C6041FAFF5210A36F4FE8F7D790011F0 /* Any+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A00697A5CB12481F098DFFEF72FC22 /* Any+Extension.swift */; };
@@ -109,6 +110,7 @@
 		B768288049726DBEC5631088E00A8314 /* Pods-RCToolKit_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RCToolKit_Example-umbrella.h"; sourceTree = "<group>"; };
 		BA561C1BC59E57DD8DEB8AFFD4720EEF /* Pods-RCToolKit_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RCToolKit_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		BAEDD6D1199EE67554E4DD39E874987D /* CacheNode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CacheNode.swift; sourceTree = "<group>"; };
+		BEADE68428CA02D50041C1F1 /* RCFileLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCFileLog.swift; sourceTree = "<group>"; };
 		C2D6B6C3CDE7C10DF993B8E24958A66B /* Pods-RCToolKit_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RCToolKit_Example-Info.plist"; sourceTree = "<group>"; };
 		CC484CFE5A3F527787DC7B0B8E16A18E /* RCStack.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RCStack.swift; sourceTree = "<group>"; };
 		D4C571ACF6BAB7309DE501FE8B920BB1 /* RCToolKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = RCToolKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -391,6 +393,7 @@
 			isa = PBXGroup;
 			children = (
 				65864BDEB84CA87009F7C3C813F51037 /* RCConsoleLog.swift */,
+				BEADE68428CA02D50041C1F1 /* RCFileLog.swift */,
 				384BF863686CB0EEFC46B670551DE40D /* RCDefaultFormatter.swift */,
 				1063FA19C509E7063664BA19B594FB88 /* RCLog.swift */,
 				ED111BBBC5C2A14DAC46A253C79BD097 /* RCLogItem.swift */,
@@ -572,6 +575,7 @@
 			files = (
 				C6041FAFF5210A36F4FE8F7D790011F0 /* Any+Extension.swift in Sources */,
 				A4F41717CAE87752278FC5E13CBC8B75 /* BaseWarpper.swift in Sources */,
+				BEADE68528CA02D50041C1F1 /* RCFileLog.swift in Sources */,
 				B7D713AD411AABD1839D2660560C6461 /* CacheNode.swift in Sources */,
 				1C51651EBE3D65078EA9FE8311571E00 /* Date+Extension.swift in Sources */,
 				D6ABA558D8DE7D36873A7FDA7A3E2EC9 /* DiskCache.swift in Sources */,
