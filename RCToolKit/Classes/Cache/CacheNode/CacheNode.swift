@@ -11,6 +11,7 @@ public class CacheNode: Equatable {
     public static func == (left: CacheNode, right: CacheNode) -> Bool {
         return false
     }
+
     public var key: KeyEnable?
     public var data: ValueEnable?
 

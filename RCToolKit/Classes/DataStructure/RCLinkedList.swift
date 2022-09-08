@@ -7,10 +7,6 @@
 
 import Foundation
 
-class RCLinkedNode<T> {
-    
-}
+class RCLinkedNode<T> {}
 
-public class RCLinkedList<T> {
-    
-}
+public class RCLinkedList<T> {}

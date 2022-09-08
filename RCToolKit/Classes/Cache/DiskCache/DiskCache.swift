@@ -26,7 +26,7 @@ public class DiskCache: PTBaseCache {
     override public func cache<K, V>(key: K, value: V) where K: KeyEnable, V: ValueEnable {
         let cacheFilePath = fileFullPath(fileName: fileName(with: key))
         guard let data = value.encode() else {
-            if existFile(path: cacheFilePath)   {
+            if existFile(path: cacheFilePath) {
                 deletePath(path: cacheFilePath)
             }
             return
@@ -38,8 +38,8 @@ public class DiskCache: PTBaseCache {
         }
         currentCacheSize += UInt32(data.count)
     }
-    
-    public override func delete(key: String) {
+
+    override public func delete(key: String) {
         let cacheFilePath = fileFullPath(fileName: key.md5)
         deletePath(path: cacheFilePath)
     }
@@ -69,6 +69,6 @@ extension DiskCache {
     }
 
     private func deletePath(path: String) {
-        let _ = FileManager.default.rc.deleteItem(at: path)
+        _ = FileManager.default.rc.deleteItem(at: path)
     }
 }

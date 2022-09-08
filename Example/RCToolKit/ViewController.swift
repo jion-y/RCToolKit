@@ -16,12 +16,12 @@ class ViewController: UIViewController {
         RCLog.addLogger(logger: RCConsoleLog())
         self.view.rc.x = 10;
 //        queue.async {
-            RCLog.logD(message: "As of CocoaLumberjack 3.6.0, you can use the Swift Package Manager as integration method. If you want to use the Swift Package Manager as integration method, either use Xcode to add the package dependency or add the following dependency to your Package.swift:",tag: "HAHAH");
-        
-        RCLog.logW(message: "As of CocoaLumberjack 3.6.0, you can use the Swift Package Manager as integration method. If you want to use the Swift Package Manager as integration method, either use Xcode to add the package dependency or add the following dependency to your Package.swift:",tag: "HAHAH");
-        
-        RCLog.logE(message: "As of CocoaLumberjack 3.6.0, you can use the Swift Package Manager as integration method. If you want to use the Swift Package Manager as integration method, either use Xcode to add the package dependency or add the following dependency to your Package.swift:",tag: "HAHAH");
-        RCLog.logInfo(message: "As of CocoaLumberjack 3.6.0, you can use the Swift Package Manager as integration method. If you want to use the Swift Package Manager as integration method, either use Xcode to add the package dependency or add the following dependency to your Package.swift:",tag: "HAHAH");
+            RCLog.logD(message: "走你！！！！");
+        RCLog.LogT(tag: "xxx1");
+        sleep(10)
+        RCLog.LogT(tag: "xxx1");
+        RCLog.LogT(tag: "xxx1")
+        RCLog.removeLogT(tag: "xxx1");
 //        }
         
     }

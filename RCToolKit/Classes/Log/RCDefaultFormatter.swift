@@ -13,29 +13,30 @@ public struct RCDefaultFormatter {
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSSS"
     }
 }
-extension RCDefaultFormatter:logFomatreralbel {
-    public func formatter(_ msg: RCLogMessage) ->String {
+
+extension RCDefaultFormatter: logFomatreralbel {
+    public func formatter(_ msg: RCLogMessage) -> String {
         var logStr = String.rc.empty
-//#if !canImport(OSLog)
-        logStr += "[\(self.formatter.string(from: msg.date))] "
-//#endif
+        // #if !canImport(OSLog)
+        logStr += "[\(formatter.string(from: msg.date))] "
+        // #endif
         logStr += "[" + msg.type.des + "]"
         if !msg.queueLabel.isEmpty {
             logStr += "[" + msg.queueLabel + "]"
         }
-//#if !canImport(OSLog)
+        // #if !canImport(OSLog)
         if !msg.threadId.isEmpty {
             logStr += "[" + msg.threadId + "]"
         }
-//#endif
+        // #endif
+
         let url = URL(fileURLWithPath: msg.file)
         let fileName = url.lastPathComponent
-        logStr += "[" + fileName + "]" + "[LINE: " + msg.line + "] "
+        logStr += "[" + fileName + "]" + "[FUNC:" + msg.funcName + "]" + "[LINE: " + msg.line + "] "
         if !msg.tag.isEmpty {
             logStr += "[TAG: " + msg.tag + "] "
         }
-        logStr +=  msg.message
+        logStr += msg.message
         return logStr
     }
-    
 }

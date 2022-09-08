@@ -216,10 +216,8 @@ extension String: ValueEnable {
 // extension Data:ValueEnable{}
 
 public extension String {
-    /* ################################################################## */
-    /**
-     - returns: the String, as an MD5 hash.
-     */
+    // ##################################################################
+    /// - returns: the String, as an MD5 hash.
     var md5: String {
         let str = cString(using: String.Encoding.utf8)
         let strLen = CUnsignedInt(lengthOfBytes(using: String.Encoding.utf8))

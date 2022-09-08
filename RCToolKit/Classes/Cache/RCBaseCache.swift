@@ -19,7 +19,7 @@ public class PTBaseCache {
                 _cacheDir = newValue
                 let _ = FileManager.default.rc.createDirectory(_cacheDir)
             }
-            self.currentCacheSize = FileManager.default.rc.directorySize(_cacheDir)
+            currentCacheSize = FileManager.default.rc.directorySize(_cacheDir)
         }
         get {
             return _cacheDir
