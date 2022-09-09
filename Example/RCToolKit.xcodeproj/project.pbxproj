@@ -24,10 +24,8 @@
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		6615A1293716093D7007EB67 /* Pods-RCToolKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RCToolKit_Tests.release.xcconfig"; path = "Target Support Files/Pods-RCToolKit_Tests/Pods-RCToolKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		6703EF9199EFA7EB4EC4910D /* Pods_RCToolKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RCToolKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		73F58C74D6512BE1BAA5A26F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		75093EEEBD0C15B7D70E47AB /* Pods-RCToolKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RCToolKit_Tests.debug.xcconfig"; path = "Target Support Files/Pods-RCToolKit_Tests/Pods-RCToolKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		84EBC75B1F7FCDBA2A10DB57 /* Pods_RCToolKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RCToolKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1D125DC7232066677B4A57D /* Pods-RCToolKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RCToolKit_Example.release.xcconfig"; path = "Target Support Files/Pods-RCToolKit_Example/Pods-RCToolKit_Example.release.xcconfig"; sourceTree = "<group>"; };
 		DBEB35B094B3D2EA99E8038C /* Pods-RCToolKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RCToolKit_Example.debug.xcconfig"; path = "Target Support Files/Pods-RCToolKit_Example/Pods-RCToolKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -111,8 +109,6 @@
 			children = (
 				DBEB35B094B3D2EA99E8038C /* Pods-RCToolKit_Example.debug.xcconfig */,
 				B1D125DC7232066677B4A57D /* Pods-RCToolKit_Example.release.xcconfig */,
-				75093EEEBD0C15B7D70E47AB /* Pods-RCToolKit_Tests.debug.xcconfig */,
-				6615A1293716093D7007EB67 /* Pods-RCToolKit_Tests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";

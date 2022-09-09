@@ -44,12 +44,12 @@ void exceptionHandler(NSException *exception) {
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:[exception userInfo]];
     [userInfo setObject:callStack forKey:UncaughtExceptionHandlerAddressesKey];
     NSException * newException = [NSException exceptionWithName:[exception name] reason:[exception reason] userInfo:userInfo];
-    
-    [[RCCrashhunter share] handleException:newException];
     // 调用之前已经注册的handler
     if (OldHandler) {
         OldHandler(exception);
     }
+    [[RCCrashhunter share] handleException:newException];
+
 }
 @implementation RCCrashhunter {
     
