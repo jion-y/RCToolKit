@@ -13,17 +13,18 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        RCLog.addLogger(logger: RCConsoleLog())
-        RCLog.addLogger(logger:RCFileLog())
+        RCLog.rc.setLogLevel(level: .debug)
+        RCLog.rc.addLogger(logger: RCConsoleLog())
+        RCLog.rc.addLogger(logger:RCFileLog())
         self.view.rc.x = 10;
 //        queue.async {
-            RCLog.logD(message: "走你！！！！");
-        RCLog.LogT(tag: "xxx1");
+        RCLog.rc.logD(message: "走你！！！！");
+        RCLog.rc.LogT(tag: "xxx1");
         sleep(10)
-        RCLog.LogT(tag: "xxx1");
-        RCLog.LogT(tag: "xxx1")
-        RCLog.removeLogT(tag: "xxx1");
-//        }
+        RCLog.rc.LogT(tag: "xxx1");
+        RCLog.rc.LogT(tag: "xxx1")
+        RCLog.rc.removeLogT(tag: "xxx1");
+        self.perform(NSSelectorFromString("aaa"));
         
     }
 

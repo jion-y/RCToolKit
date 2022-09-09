@@ -140,7 +140,13 @@ public extension ThreadSafeArray {
         pthread_rwlock_unlock(&lock)
         return result
     }
-
+    
+//    public func contains(_ element: Element) -> Bool {
+//        pthread_rwlock_rdlock(&lock)
+//        let result = array.contains {  $0 == element }
+//        pthread_rwlock_unlock(&lock)
+//        return result
+//    }
     func allSatisfy(_ predicate: (Element)->Bool)->Bool {
         pthread_rwlock_rdlock(&lock)
         let result = array.allSatisfy(predicate)

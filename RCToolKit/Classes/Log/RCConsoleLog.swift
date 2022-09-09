@@ -30,7 +30,7 @@ extension RCConsoleLog:LogOutputable {
     
     public func logMessage(msg: RCLogMessage) {
         
-        let log = self.formatter?.formatter(msg) ?? String.rc.empty
+        let log = self.formatter?.formatter(msg,emo: true) ?? String.rc.empty
 //#if canImport(OSLog)
 //        os_log("%@", log: .default, type: .info, log)
 //#else

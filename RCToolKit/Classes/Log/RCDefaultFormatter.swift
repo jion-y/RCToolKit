@@ -15,12 +15,17 @@ public struct RCDefaultFormatter {
 }
 
 extension RCDefaultFormatter: logFomatreralbel {
-    public func formatter(_ msg: RCLogMessage) -> String {
+    public func formatter(_ msg: RCLogMessage,emo:Bool = false) -> String {
         var logStr = String.rc.empty
         // #if !canImport(OSLog)
         logStr += "[\(formatter.string(from: msg.date))] "
         // #endif
-        logStr += "[" + msg.type.des + "]"
+        if emo {
+            logStr += "[" + msg.type.emoDes + "]"
+        } else {
+            logStr += "[" + msg.type.des + "]"
+        }
+        
         if !msg.queueLabel.isEmpty {
             logStr += "[" + msg.queueLabel + "]"
         }

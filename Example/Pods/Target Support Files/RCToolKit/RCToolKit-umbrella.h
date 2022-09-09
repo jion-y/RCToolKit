@@ -10,6 +10,7 @@
 #endif
 #endif
 
+#import "RCCrashhunter.h"
 
 FOUNDATION_EXPORT double RCToolKitVersionNumber;
 FOUNDATION_EXPORT const unsigned char RCToolKitVersionString[];

@@ -14,6 +14,22 @@ public enum LogLevel {
     case warning
     case error
     case all
+    var emoDes: String {
+        switch self {
+        case .off:
+            return "✖️"
+        case .debug:
+            return "🔨"
+        case .info:
+            return "📌"
+        case .warning:
+            return "🟨"
+        case .error:
+            return "😡"
+        case .all:
+            return "😋"
+        }
+    }
     var des: String {
         switch self {
         case .off:
@@ -33,7 +49,7 @@ public enum LogLevel {
 }
 
 public protocol logFomatreralbel {
-    func formatter(_ msg: RCLogMessage) -> String
+    func formatter(_ msg: RCLogMessage,emo:Bool) -> String
 }
 
 public protocol LogOutputable: NSObject {
@@ -42,84 +58,15 @@ public protocol LogOutputable: NSObject {
     func flush()
 }
 
+
+
 public class RCLog {
     public static var `default` = RCLog()
     private let logQueue = DispatchQueue(label: logQueueName, qos: .default)
     public let loggers: ThreadSafeArray<RCLogNode> = ThreadSafeArray()
     private static let logQueueName: String = "com.rc.logger"
     private var timeLogMap: ThreadSafeDictionary<String,UInt64> = ThreadSafeDictionary()
-}
-
-public extension RCLog {
-    static func addLogger(logger: LogOutputable) {
-        RCLog.default.addLogger(logger: logger, level: .all)
-    }
-
-    static func removeLogger(logger: LogOutputable) {
-        RCLog.default.removeLogger(logger: logger)
-    }
-
-    static func logInfo(message: String,
-                        tag: String = "",
-                        file: String = #file,
-                        function: String = #function,
-                        line: Int = #line)
-    {
-        self.log(asynchronous: true, level: .info, message: message, tag: tag, file: file, function: function, line: line)
-    }
-
-    static func logD(message: String,
-                     tag: String = "",
-                     file: String = #file,
-                     function: String = #function,
-                     line: Int = #line)
-    {
-        self.log(asynchronous: true, level: .debug, message: message, tag: tag, file: file, function: function, line: line)
-    }
-
-    static func logW(message: String,
-                     tag: String = "",
-                     file: String = #file,
-                     function: String = #function,
-                     line: Int = #line)
-    {
-        self.log(asynchronous: true, level: .warning, message: message, tag: tag, file: file, function: function, line: line)
-    }
-
-    static func logE(message: String,
-                     tag: String = "",
-                     file: String = #file,
-                     function: String = #function,
-                     line: Int = #line)
-    {
-        self.log(asynchronous: true, level: .error, message: message, tag: tag, file: file, function: function, line: line)
-    }
-
-    static func log(asynchronous: Bool,
-                    level: LogLevel,
-                    message: String,
-                    tag: String = "",
-                    file: String = #file,
-                    function: String = #function,
-                    line: Int = #line)
-    {
-        RCLog.default.log(asynchronous: asynchronous, level: level, message: message, tag: tag, file: file, function: function, line: line)
-    }
-
-    static func LogT(tag: String,
-                     file: String = #file,
-                     function: String = #function,
-                     line: Int = #line)
-    {
-        RCLog.default.LogT(tag: tag, file: file, function: function, line: line)
-    }
-
-    static func removeLogT(tag: String, file: String = #file,
-                           function: String = #function,
-                           line: Int = #line)
-    {
-        RCLog.default.removeLogT(tag: tag, file: file, function: function, line: line)
-    }
+    public var logLevel:LogLevel = .all
 }
 
 public extension RCLog {
@@ -153,6 +100,7 @@ public extension RCLog {
              function: String = #function,
              line: Int = #line)
     {
+        if !invalidLogLevel(level: level) { return }
         let msg = RCLogMessage(type: level,
                                message: message,
                                funcName: function,
@@ -192,8 +140,100 @@ public extension RCLog {
         }
         self.loggers.remove(at: index)
     }
+    func invalidLogLevel(level:LogLevel) -> Bool {
+      switch self.logLevel {
+        case .off:
+            return false
+      case .debug :
+          return level != .off
+      case .info:
+          return (level == .info || level == .warning  || level == .error)
+      case .warning:
+          return (level == .warning || level == .error)
+      case .error:
+          return level == .error
+        default:
+          return (logLevel != .off)
+        }
+    }
 }
 
+extension RCLog:ExtensionCompatible {}
+
+public extension ExtensionWrapper where Base == RCLog.Type  {
+    func setLogLevel(level:LogLevel) {
+        RCLog.default.logLevel = level
+    }
+    func addLogger(logger: LogOutputable) {
+        RCLog.default.addLogger(logger: logger, level: .all)
+    }
+
+     func removeLogger(logger: LogOutputable) {
+        RCLog.default.removeLogger(logger: logger)
+    }
+
+    func logInfo(message: String,
+                        tag: String = "",
+                        file: String = #file,
+                        function: String = #function,
+                        line: Int = #line)
+    {
+        log(asynchronous: true, level: .info, message: message, tag: tag, file: file, function: function, line: line)
+    }
+
+    func logD(message: String,
+                     tag: String = "",
+                     file: String = #file,
+                     function: String = #function,
+                     line: Int = #line)
+    {
+       log(asynchronous: true, level: .debug, message: message, tag: tag, file: file, function: function, line: line)
+    }
+
+     func logW(message: String,
+                     tag: String = "",
+                     file: String = #file,
+                     function: String = #function,
+                     line: Int = #line)
+    {
+        log(asynchronous: true, level: .warning, message: message, tag: tag, file: file, function: function, line: line)
+    }
+
+     func logE(message: String,
+                     tag: String = "",
+                     file: String = #file,
+                     function: String = #function,
+                     line: Int = #line)
+    {
+       log(asynchronous: true, level: .error, message: message, tag: tag, file: file, function: function, line: line)
+    }
+
+    func log(asynchronous: Bool,
+                    level: LogLevel,
+                    message: String,
+                    tag: String = "",
+                    file: String = #file,
+                    function: String = #function,
+                    line: Int = #line)
+    {
+        RCLog.default.log(asynchronous: asynchronous, level: level, message: message, tag: tag, file: file, function: function, line: line)
+    }
+
+    func LogT(tag: String,
+                     file: String = #file,
+                     function: String = #function,
+                     line: Int = #line)
+    {
+        RCLog.default.LogT(tag: tag, file: file, function: function, line: line)
+    }
+
+    func removeLogT(tag: String, file: String = #file,
+                           function: String = #function,
+                           line: Int = #line)
+    {
+        RCLog.default.removeLogT(tag: tag, file: file, function: function, line: line)
+    }
+}
 public class RCLogNode {
     public var logger: LogOutputable
     public var level: LogLevel = .off

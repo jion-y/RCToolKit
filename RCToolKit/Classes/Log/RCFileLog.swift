@@ -7,7 +7,7 @@
 
 import Foundation
 public class RCFileLog: NSObject {
-    public var logCacheSize: Int = 10
+    public var logCacheSize: Int = 1
     public var logDir: String {
         set {
             if newValue.rc.isEmpty { return }
@@ -34,6 +34,13 @@ public class RCFileLog: NSObject {
     private let writeFileQueue = DispatchQueue(label: "com.rc-log.writeFileQueue")
     private var file: File?
     private let dateFormatter = DateFormatter()
+    private let monitor:CrashMonitor = CrashMonitor.default
+    public override init() {
+        super.init()
+        self.subscribe(monitor)
+    }
+    
+  
     
     deinit {
         writeLogToFile()
@@ -56,7 +63,7 @@ extension RCFileLog: LogOutputable {
 
     public func logMessage(msg: RCLogMessage) {
         guard let fmatter = formatter else { return }
-        logMemoryCache.append(fmatter.formatter(msg))
+        logMemoryCache.append(fmatter.formatter(msg,emo: false))
         if logMemoryCache.count >= logCacheSize {
             writeLogToFile()
         }
@@ -91,5 +98,17 @@ extension RCFileLog {
         let cachePath = FileManager.default.rc.cachePath()
         let defaultLogDir = cachePath + "/" + identifier + "/"
         return defaultLogDir
+    }
+}
+extension RCFileLog:Subcribable {
+    public func onValueChange(newValue: [String : Any]) {
+        guard let stackStr  = newValue[CrashMonitor.CrashStackInfoKey] as? String else {
+            return
+        }
+        self.flush()
+        writeFileQueue.async {
+            self.file?.writeStringToFile(str: stackStr)
+        }
+            
     }
 }
