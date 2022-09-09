@@ -6,7 +6,7 @@
 //
 
 import Foundation
-public class SafeDictionary<Key, Value> where Key: Hashable {
+public class ThreadSafeDictionary<Key, Value> where Key: Hashable {
     private var dic: [Key: Value] = [:]
     private var lock = pthread_rwlock_t()
 
@@ -25,7 +25,7 @@ public class SafeDictionary<Key, Value> where Key: Hashable {
     }
 }
 
-public extension SafeDictionary {
+public extension ThreadSafeDictionary {
     subscript(key: Key) -> Value? {
         get {
             pthread_rwlock_rdlock(&lock)
@@ -131,7 +131,7 @@ public extension SafeDictionary {
         pthread_rwlock_unlock(&lock)
         return rst
     }
-
+    @discardableResult
     func removeValue(forKey key: Key) -> Value? {
         pthread_rwlock_wrlock(&lock)
         let rst = dic.removeValue(forKey: key)
@@ -323,7 +323,7 @@ public extension SafeDictionary {
     }
 }
 
-extension SafeDictionary {
+extension ThreadSafeDictionary {
     var isEmpty: Bool {
         pthread_rwlock_rdlock(&lock)
         let rst = dic.isEmpty

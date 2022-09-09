@@ -6,7 +6,6 @@
 //
 
 import Foundation
-extension FileManager:ExtensionCompatible {}
 public extension ExtensionWrapper where Base == FileManager {
     func createDirectory(_ path: String) ->Bool {
         var isDir: ObjCBool = false
@@ -58,5 +57,17 @@ public extension ExtensionWrapper where Base == FileManager {
             print(" get cache file size error \(error)")
         }
         return 0
+    }
+    func documentPath()->String {
+        return NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first ??  String.rc.empty
+    }
+    func libraryPath()->String {
+        return NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).first ?? String.rc.empty
+    }
+    func cachePath()->String {
+        return NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first ?? String.rc.empty
+    }
+    func tempPath()->String {
+        return NSTemporaryDirectory()
     }
 }

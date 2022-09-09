@@ -38,4 +38,8 @@ extension RCConsoleLog:LogOutputable {
 //#endif
   
     }
+    
+    public func flush() {
+        
+    }
 }

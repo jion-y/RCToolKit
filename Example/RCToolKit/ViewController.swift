@@ -14,6 +14,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         RCLog.addLogger(logger: RCConsoleLog())
+        RCLog.addLogger(logger:RCFileLog())
         self.view.rc.x = 10;
 //        queue.async {
             RCLog.logD(message: "走你！！！！");

@@ -39,6 +39,7 @@ public protocol logFomatreralbel {
 public protocol LogOutputable: NSObject {
     var formatter: logFomatreralbel? { get set }
     func logMessage(msg: RCLogMessage)
+    func flush()
 }
 
 public class RCLog {
@@ -46,7 +47,7 @@ public class RCLog {
     private let logQueue = DispatchQueue(label: logQueueName, qos: .default)
     public let loggers: ThreadSafeArray<RCLogNode> = ThreadSafeArray()
     private static let logQueueName: String = "com.rc.logger"
-    private var timeLogMap: SafeDictionary<String,UInt64> = SafeDictionary()
+    private var timeLogMap: ThreadSafeDictionary<String,UInt64> = ThreadSafeDictionary()
 }
 
 public extension RCLog {
