@@ -8,6 +8,10 @@
 import Foundation
 
 extension NSObject:ExtensionCompatible {}
+extension Float:ExtensionCompatible {}
+extension Double:ExtensionCompatible {}
+
+extension CGSize:ExtensionCompatible {}
 
 public extension ExtensionWrapper {
     var threadId:__uint64_t {
@@ -36,5 +40,31 @@ public extension ExtensionWrapper {
             return String(validatingUTF8: __dispatch_queue_get_label(nil)) ?? String.rc.empty
             
         }
+    }
+}
+public extension ExtensionWrapper where Base == Float {
+    var isZero:Bool {
+        let dpsinon :Float = 1.00e-07
+        return (base >= -dpsinon) && (base <= dpsinon)
+    }
+    var half:Float {
+        return base / 2.0
+    }
+    
+    var double:Float {
+        return base * 2.0
+    }
+}
+public extension ExtensionWrapper where Base == CGFloat {
+    func randiansToDegress(_ radians:CGFloat) ->CGFloat {
+        return radians * (.pi / 360.0)
+    }
+}
+public extension ExtensionWrapper where Base == CGSize {
+    func swip() ->CGSize {
+        return CGSize(width: base.height, height: base.width)
+    }
+    func scale(_ scale:CGFloat) -> CGSize {
+        return CGSize(width: base.width * scale, height: base.height * scale)
     }
 }
