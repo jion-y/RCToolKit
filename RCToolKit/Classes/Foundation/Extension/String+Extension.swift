@@ -8,7 +8,6 @@
 import Foundation
 extension String:ExtensionCompatible {}
 
-
 public extension ExtensionWrapper where Base == String.Type {
     var empty:String { get { return "" }  }
 }

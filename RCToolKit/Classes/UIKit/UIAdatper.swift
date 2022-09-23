@@ -68,11 +68,11 @@ func getStandardSize(adaptMode: AdapterMode, defaultMode: AdapterMode = .i_6s) -
 /// 适配协议，给实现这个协议的类型扩展 * 方法。
 public protocol AdapterEable {
     static func * (lsh: Self, rsh: CGFloat) -> Self
-    var adpaptValue: Self { get }
+    var aptValue: Self { get }
 }
 
 public extension AdapterEable {
-    var adpaptValue: Self {
+    var aptValue: Self {
         return UIAdatper.adapter(element: self)
     }
 }
@@ -108,7 +108,11 @@ extension CGRect: AdapterEable {
     }
 }
 
-extension CGFloat: AdapterEable {}
+extension CGFloat: AdapterEable {
+    public static func * (lsh: Float, rsh: CGFloat) -> Float {
+        return lsh * Float(rsh)
+    }
+}
 extension Float: AdapterEable {
     public static func * (lsh: Float, rsh: CGFloat) -> Float {
         return lsh * Float(rsh)

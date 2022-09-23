@@ -13,7 +13,7 @@ extension Double:ExtensionCompatible {}
 
 extension CGSize:ExtensionCompatible {}
 
-public extension ExtensionWrapper {
+public extension ExtensionCompatible {
     var threadId:__uint64_t {
         get {
             let thrid = UnsafeMutablePointer<__uint64_t>.allocate(capacity: 1)
