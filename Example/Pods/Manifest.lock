@@ -1,15 +1,22 @@
 PODS:
-  - RCToolKit (0.1.0)
+  - CocoaAsyncSocket (7.6.5)
+  - RCToolKit (0.1.0):
+    - CocoaAsyncSocket
 
 DEPENDENCIES:
   - RCToolKit (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - CocoaAsyncSocket
 
 EXTERNAL SOURCES:
   RCToolKit:
     :path: "../"
 
 SPEC CHECKSUMS:
-  RCToolKit: 1de39d204064fbaa51cf21c340bcdddc93b64c39
+  CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
+  RCToolKit: c5cc4e4a6dcbe451ff23b2d53c8cb9837bc04ddd
 
 PODFILE CHECKSUM: 42d462aead21121fbdd98c4e2a9187be490b40e8
 

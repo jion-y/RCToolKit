@@ -16,16 +16,33 @@ class ViewController: UIViewController {
         RCLog.rc.setLogLevel(level: .debug)
         RCLog.rc.addLogger(logger: RCConsoleLog())
         RCLog.rc.addLogger(logger:RCFileLog())
-        self.view.rc.x = 10;
+        if #available(iOS 13.0, *) {
+            RCLog.rc.addLogger(logger: RCWebsocketLog())
+        } else {
+            // Fallback on earlier versions
+        }
+        self.view.rc.x = 10.aptValue;
 //        queue.async {
         RCLog.rc.logD(message: "走你！！！！");
         RCLog.rc.LogT(tag: "xxx1");
-        sleep(10)
+//        sleep(2)åß
         RCLog.rc.LogT(tag: "xxx1");
         RCLog.rc.LogT(tag: "xxx1")
         RCLog.rc.removeLogT(tag: "xxx1");
-        self.perform(NSSelectorFromString("aaa"));
+//        for i in 0..<1000 {
+//            RCLog.rc.logD(message: "this message index \(i)");
+//        }
         
+        self.view.rc.bgColor(.white).clipsToBounds()
+        
+        
+        UIImageView().rc
+            .addToSuperView(self.view)
+            .bgColor(.blue)
+            .frame(CGRect(x: 10, y: 10, width: 100, height: 100))
+            .bgColor(.blue)
+            .image(nil)
+            .cornerRadius(20.0)
     }
 
     override func didReceiveMemoryWarning() {
