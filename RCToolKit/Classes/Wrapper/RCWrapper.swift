@@ -28,10 +28,10 @@ extension ExtensionCompatible {
     }
 }
 
-extension ExtensionCompatibleValue {
-    public var rc: ExtensionWrapper<Self> {
-        get { return ExtensionWrapper(self) }
-        set { }
-    }
-}
+//extension ExtensionCompatibleValue {
+//    public var rc: ExtensionWrapper<Self> {
+//        get { return ExtensionWrapper(self) }
+//        set { }
+//    }
+//}
 

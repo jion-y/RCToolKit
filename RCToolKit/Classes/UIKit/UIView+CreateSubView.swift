@@ -156,8 +156,8 @@ public extension ExtensionWrapper where Base: UIView {
     }
     
     @discardableResult
-     func addToSuperView(superViwer:UIView)-> ExtensionWrapper {
-        superViwer.addSubview(base)
+     func addToSuperView(_ superViwe:UIView)-> ExtensionWrapper {
+         superViwe.addSubview(base)
         return self
     }
     @discardableResult
@@ -185,17 +185,37 @@ public extension ExtensionWrapper where Base: UIView {
         base.isHidden = hidden
         return self
     }
+    @discardableResult
     func mask(_ maskView:UIView?) ->ExtensionWrapper {
         base.mask = maskView
         return self
     }
+    @discardableResult
     func setNeedsDisplay()->ExtensionWrapper {
         base.setNeedsLayout()
         base.layoutIfNeeded()
         return self
     }
+    @discardableResult
     func tag(_ tag:Int) ->ExtensionWrapper {
         base.tag = tag
+        return self
+    }
+    @discardableResult
+    func frame(_ frame:CGRect = .zero) ->ExtensionWrapper {
+        base.frame = frame
+        return self
+    }
+    @discardableResult
+    func tintColor(_ tintColor:UIColor) -> ExtensionWrapper {
+        base.tintColor = tintColor
+        
+        return self
+    }
+    @discardableResult
+    func cornerRadius(_ cornerRadius:CGFloat) ->ExtensionWrapper {
+        base.layer.cornerRadius = cornerRadius
+        base.layer.masksToBounds = true
         return self
     }
     
