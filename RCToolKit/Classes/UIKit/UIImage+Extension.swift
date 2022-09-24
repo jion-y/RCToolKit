@@ -7,6 +7,13 @@
 
 import Foundation
 import UIKit
+import Accelerate
+
+extension UIImage :ExtensionCompatibleValue{}
+extension CVPixelBuffer :ExtensionCompatibleValue{}
+extension CIImage:ExtensionCompatibleValue{}
+extension CGImage:ExtensionCompatibleValue {}
+
 public extension ExtensionWrapper where Base == UIImage {
     
     var size:CGSize { return base.size }
@@ -95,6 +102,46 @@ public extension ExtensionWrapper where Base == UIImage {
         let data = UIImagePNGRepresentation(base)
         return data?.base64EncodedString(options: .lineLength64Characters)
     }
+    
+    func pixelBuffer(width: Int, height: Int) -> CVPixelBuffer? {
+        var maybePixelBuffer: CVPixelBuffer?
+        let attrs = [kCVPixelBufferCGImageCompatibilityKey: kCFBooleanTrue,
+                     kCVPixelBufferCGBitmapContextCompatibilityKey: kCFBooleanTrue]
+        let status = CVPixelBufferCreate(kCFAllocatorDefault,
+                                         Int(width),
+                                         Int(height),
+                                         kCVPixelFormatType_32ARGB,
+                                         attrs as CFDictionary,
+                                         &maybePixelBuffer)
+
+        guard status == kCVReturnSuccess, let pixelBuffer = maybePixelBuffer else {
+          return nil
+        }
+
+        CVPixelBufferLockBaseAddress(pixelBuffer, CVPixelBufferLockFlags(rawValue: 0))
+        let pixelData = CVPixelBufferGetBaseAddress(pixelBuffer)
+
+        guard let context = CGContext(data: pixelData,
+                                      width: Int(width),
+                                      height: Int(height),
+                                      bitsPerComponent: 8,
+                                      bytesPerRow: CVPixelBufferGetBytesPerRow(pixelBuffer),
+                                      space: CGColorSpaceCreateDeviceRGB(),
+                                      bitmapInfo: CGImageAlphaInfo.noneSkipFirst.rawValue)
+        else {
+          return nil
+        }
+
+        context.translateBy(x: 0, y: CGFloat(height))
+        context.scaleBy(x: 1, y: -1)
+
+        UIGraphicsPushContext(context)
+        base.draw(in: CGRect(x: 0, y: 0, width: width, height: height))
+        UIGraphicsPopContext()
+        CVPixelBufferUnlockBaseAddress(pixelBuffer, CVPixelBufferLockFlags(rawValue: 0))
+
+        return pixelBuffer
+      }
 }
 
 public extension ExtensionWrapper where Base == UIImage.Type {
@@ -103,8 +150,6 @@ public extension ExtensionWrapper where Base == UIImage.Type {
         return UIImage(data: data)
     }
     
-    
-    //https://github.com/hollance/YOLO-CoreML-MPSNNGraph/blob/master/TinyYOLO-CoreML/TinyYOLO-CoreML/CVPixelBuffer%2BHelpers.swift
     //kCVPixelFormatType_32BGRA
     func image(rgba:UnsafeMutableRawPointer,size:CGSize,pixelFormat:OSType)->UIImage? {
         var pixel:CVPixelBuffer?
@@ -120,3 +165,88 @@ public extension ExtensionWrapper where Base == UIImage.Type {
         return UIImage(ciImage: ciImage)
     }
 }
+
+public extension ExtensionWrapper where Base == CVPixelBuffer  {
+    func resizePixelBuffer(cropX: Int,
+                           cropY: Int,
+                           cropWidth: Int,
+                           cropHeight: Int,
+                           scaleWidth: Int,
+                           scaleHeight: Int) -> CVPixelBuffer? {
+
+      CVPixelBufferLockBaseAddress(base, CVPixelBufferLockFlags(rawValue: 0))
+      guard let srcData = CVPixelBufferGetBaseAddress(base) else {
+        print("Error: could not get pixel buffer base address")
+        return nil
+      }
+      let srcBytesPerRow = CVPixelBufferGetBytesPerRow(base)
+      let offset = cropY*srcBytesPerRow + cropX*4
+      var srcBuffer = vImage_Buffer(data: srcData.advanced(by: offset),
+                                    height: vImagePixelCount(cropHeight),
+                                    width: vImagePixelCount(cropWidth),
+                                    rowBytes: srcBytesPerRow)
+
+      let destBytesPerRow = scaleWidth*4
+      guard let destData = malloc(scaleHeight*destBytesPerRow) else {
+        print("Error: out of memory")
+        return nil
+      }
+      var destBuffer = vImage_Buffer(data: destData,
+                                     height: vImagePixelCount(scaleHeight),
+                                     width: vImagePixelCount(scaleWidth),
+                                     rowBytes: destBytesPerRow)
+
+      let error = vImageScale_ARGB8888(&srcBuffer, &destBuffer, nil, vImage_Flags(0))
+      CVPixelBufferUnlockBaseAddress(base, CVPixelBufferLockFlags(rawValue: 0))
+      if error != kvImageNoError {
+        print("Error:", error)
+        free(destData)
+        return nil
+      }
+
+      let releaseCallback: CVPixelBufferReleaseBytesCallback = { _, ptr in
+        if let ptr = ptr {
+          free(UnsafeMutableRawPointer(mutating: ptr))
+        }
+      }
+
+      let pixelFormat = CVPixelBufferGetPixelFormatType(base)
+      var dstPixelBuffer: CVPixelBuffer?
+      let status = CVPixelBufferCreateWithBytes(nil, scaleWidth, scaleHeight,
+                                                pixelFormat, destData,
+                                                destBytesPerRow, releaseCallback,
+                                                nil, nil, &dstPixelBuffer)
+      if status != kCVReturnSuccess {
+        print("Error: could not create new pixel buffer")
+        free(destData)
+        return nil
+      }
+      return dstPixelBuffer
+    }
+
+    func resizePixelBuffer(_ width: Int, height: Int) -> CVPixelBuffer? {
+      return resizePixelBuffer(cropX: 0, cropY: 0,
+                               cropWidth: CVPixelBufferGetWidth(base),
+                               cropHeight: CVPixelBufferGetHeight(base),
+                               scaleWidth: width, scaleHeight: height)
+    }
+}
+
+public extension ExtensionWrapper where Base == CIImage {
+    
+    func cgImgae()->CGImage? {
+        let context = CIContext(options: nil)
+          if let cgImage = context.createCGImage(base, from: base.extent) {
+              return cgImage
+          }
+          return nil
+    }
+    
+}
+
+public extension ExtensionWrapper where Base == CGImage {
+    func ciImage()->CIImage? {
+        return CIImage(cgImage: base)
+    }
+}
+
