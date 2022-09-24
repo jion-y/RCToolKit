@@ -41,6 +41,9 @@ public extension ExtensionWrapper {
             
         }
     }
+    func wrapperValue()->Base {
+        return base
+    }
 }
 public extension ExtensionWrapper where Base == Float {
     var isZero:Bool {

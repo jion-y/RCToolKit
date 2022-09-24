@@ -41,6 +41,12 @@ class ViewController: UIViewController {
                         .bgColor(.blue)
                         .image(nil)
                         .cornerRadius(20.0)
+       let _ = UILabel().rc.text("hello")
+            .textColor(.red)
+            .font(.boldSystemFont(ofSize: 15))
+            .frame(CGRect(x: 100, y: 100, width: 100, height: 30))
+            .addToSuperView(self.view)
+            .wrapperValue()
     }
 
     override func didReceiveMemoryWarning() {
