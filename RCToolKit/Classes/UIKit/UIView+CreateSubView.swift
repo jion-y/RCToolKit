@@ -7,13 +7,13 @@
 
 import Foundation
 import UIKit
-extension ExtensionWrapper where Base: UIView {
+public extension ExtensionWrapper where Base: UIView {
     /// 往当前视图添加一个子视图
     /// - Parameters:
     ///   - rect: 子视图大小
     ///   - bgColor: 子视图背景色
     /// - Returns: 子视图
-   public func addView(rect: CGRect = .zero, bgColor: UIColor = .white) -> UIView {
+    func addView(rect: CGRect = .zero, bgColor: UIColor = .white) -> UIView {
         let view = UIView(frame: rect)
         view.backgroundColor = bgColor
         self.base.addSubview(view)
@@ -26,7 +26,7 @@ extension ExtensionWrapper where Base: UIView {
     ///   - rect: UIImageView
     ///   - contentMode: 图片填充模式
     /// - Returns: 图片
-    public func addImageView(image: UIImage?, rect: CGRect = .zero, contentMode:  UIView.ContentMode = .scaleToFill) -> UIImageView {
+     func addImageView(image: UIImage?, rect: CGRect = .zero, contentMode:  UIView.ContentMode = .scaleToFill) -> UIImageView {
         let imageView = UIImageView(frame: rect)
         imageView.image = image
         imageView.contentMode = contentMode
@@ -41,7 +41,7 @@ extension ExtensionWrapper where Base: UIView {
     ///   - textColor: 文本颜色
     ///   - bgColor: 背景颜色
     /// - Returns: 文本控件
-    public func addLabel(fontSize: CGFloat, text: String, textColor: UIColor, bgColor: UIColor) -> UILabel {
+     func addLabel(fontSize: CGFloat, text: String, textColor: UIColor, bgColor: UIColor) -> UILabel {
         return addLabel(font: UIFont.systemFont(ofSize: fontSize),
                            text: text,
                            textColor: textColor,
@@ -55,7 +55,7 @@ extension ExtensionWrapper where Base: UIView {
     ///   - textColor: 文本颜色
     ///   - bgColor: 背景颜色
     /// - Returns: 文本控件
-    public func addLabel(font: UIFont, text: String, textColor: UIColor, bgColor: UIColor) -> UILabel {
+     func addLabel(font: UIFont, text: String, textColor: UIColor, bgColor: UIColor) -> UILabel {
         let label = UILabel(frame: .zero)
         label.font = font
         label.text = text
@@ -77,7 +77,7 @@ extension ExtensionWrapper where Base: UIView {
     ///   - action: 事件响应方法
     ///   - event: 响应事件
     /// - Returns: 按钮
-    public func addButton(rect: CGRect, title: String, titleColor: UIColor, font: UIFont, image: UIImage?, bgImg: UIImage?, target: Any?, action: Selector?, event: UIControl.Event?) -> UIButton {
+     func addButton(rect: CGRect, title: String, titleColor: UIColor, font: UIFont, image: UIImage?, bgImg: UIImage?, target: Any?, action: Selector?, event: UIControl.Event?) -> UIButton {
         let btn = UIButton(type: .custom)
         btn.frame = rect
         btn.setTitle(title, for: .normal)
@@ -105,7 +105,7 @@ extension ExtensionWrapper where Base: UIView {
     ///   - action: 事件响应方法
     ///   - event:响应事件
     /// - Returns: 按钮控件
-    public func addButton(rect: CGRect, title: String, titleColor: UIColor, target: Any?, action: Selector?, event: UIControl.Event?) -> UIButton {
+     func addButton(rect: CGRect, title: String, titleColor: UIColor, target: Any?, action: Selector?, event: UIControl.Event?) -> UIButton {
         return addButton(rect: rect,
                             title: title,
                             titleColor: titleColor,
@@ -125,7 +125,7 @@ extension ExtensionWrapper where Base: UIView {
     ///   - action: 事件响应方法
     ///   - event: 响应事件
     /// - Returns: 按钮控件
-    public func addButton(rect: CGRect, image: UIImage, target: Any?, action: Selector?, event: UIControl.Event?) -> UIButton {
+     func addButton(rect: CGRect, image: UIImage, target: Any?, action: Selector?, event: UIControl.Event?) -> UIButton {
         return addButton(rect: rect,
                             title: "",
                             titleColor: .white,
@@ -143,7 +143,7 @@ extension ExtensionWrapper where Base: UIView {
     ///   - delegate: delegate对象
     ///   - dataSource: dataSource 对象
     /// - Returns: 表视图
-    public func addTableView(rect: CGRect, delegate: UITableViewDelegate?, dataSource: UITableViewDataSource?) -> UITableView {
+     func addTableView(rect: CGRect, delegate: UITableViewDelegate?, dataSource: UITableViewDataSource?) -> UITableView {
         let tableView = UITableView(frame: rect)
         tableView.delegate = delegate
         tableView.dataSource = dataSource
@@ -154,4 +154,49 @@ extension ExtensionWrapper where Base: UIView {
         }
         return tableView
     }
+    
+    @discardableResult
+     func addToSuperView(superViwer:UIView)-> ExtensionWrapper {
+        superViwer.addSubview(base)
+        return self
+    }
+    @discardableResult
+    func bgColor(_ color:UIColor) -> ExtensionWrapper {
+        base.backgroundColor = color
+        return self
+    }
+    @discardableResult
+    func contentMode(_ mode:UIView.ContentMode)->ExtensionWrapper {
+        base.contentMode = mode
+        return self
+    }
+    @discardableResult
+    func clipsToBounds(_ clipsToBounds:Bool = true) ->ExtensionWrapper {
+        base.clipsToBounds = clipsToBounds
+        return self
+    }
+    @discardableResult
+    func alpha(_ alpha:CGFloat)->ExtensionWrapper {
+        base.alpha = alpha
+        return self
+    }
+    @discardableResult
+    func hidden(_ hidden:Bool) -> ExtensionWrapper {
+        base.isHidden = hidden
+        return self
+    }
+    func mask(_ maskView:UIView?) ->ExtensionWrapper {
+        base.mask = maskView
+        return self
+    }
+    func setNeedsDisplay()->ExtensionWrapper {
+        base.setNeedsLayout()
+        base.layoutIfNeeded()
+        return self
+    }
+    func tag(_ tag:Int) ->ExtensionWrapper {
+        base.tag = tag
+        return self
+    }
+    
 }
