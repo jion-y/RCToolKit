@@ -16,16 +16,16 @@ public enum UIViewAnimationFlipDirection {
     case Right
     case Bottom
     
-    func subDescript() -> String {
+    func subDescript() -> CATransitionSubtype {
         switch self {
         case .Top:
-            return "fromTop"
+            return .fromTop
         case .Left:
-            return "fromLeft"
+            return .fromLeft
         case .Bottom:
-            return "fromBottom"
+            return .fromBottom
         case .Right:
-            return "fromRight"
+            return .fromRight
         }
     }
 }
@@ -90,7 +90,7 @@ public extension ExtensionWrapper where Base : UIView {
       }
     func shakeHorizontally() {
         let keyAnimation = CAKeyframeAnimation(keyPath: "transform.translation.x")
-        keyAnimation.timingFunctions = [CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)]
+        keyAnimation.timingFunctions = [CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)]
         keyAnimation.duration = 0.5
         keyAnimation.values = [-12,12,-8,8,-4,4,0]
         base.layer.add(keyAnimation, forKey: "shake")
@@ -98,7 +98,7 @@ public extension ExtensionWrapper where Base : UIView {
     
     func shakeVertically() {
         let keyAnimation = CAKeyframeAnimation(keyPath: "transform.translation.y")
-        keyAnimation.timingFunctions = [CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)]
+        keyAnimation.timingFunctions = [CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)]
         keyAnimation.duration = 0.5
         keyAnimation.values = [-12,12,-8,8,-4,4,0]
         base.layer.add(keyAnimation, forKey: "shake")
@@ -132,7 +132,7 @@ public extension ExtensionWrapper where Base : UIView {
         
         transition.startProgress = 0.0
         transition.endProgress = 1.0
-        transition.type = "flip"
+        transition.type = .fade
         transition.subtype = subtype
         transition.duration = duration
         transition.repeatCount = repeatCount
@@ -145,7 +145,7 @@ public extension ExtensionWrapper where Base : UIView {
         rotationAnimation.duration = duration;
         rotationAnimation.autoreverses = autoreverse;
         rotationAnimation.repeatCount = repeatCount;
-        rotationAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        rotationAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         base.layer.add(rotationAnimation, forKey: "transform.rotation.z")
         
     }

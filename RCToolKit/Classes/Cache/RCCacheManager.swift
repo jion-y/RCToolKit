@@ -181,7 +181,7 @@ extension String: KeyEnable {
 
 extension UIImage: ValueEnable {
     public func encode() -> Data? {
-        return UIImageJPEGRepresentation(self, 0.9)
+        return self.jpegData(compressionQuality: 0.9)
     }
 
     public static func decode(data: Data) -> ValueEnable? {

@@ -120,3 +120,7 @@ extension ExtensionWrapper where Base: UIView {
     }
 }
 
+extension ExtensionWrapper where Base == UIView.Type  {
+    public var empty :UIView { return  UIView(frame: .zero) }
+}
+

@@ -32,7 +32,7 @@ public class WebSocketClient: NSObject,URLSessionWebSocketDelegate {
         }
         var requst = URLRequest(url: requestURL)
         requst.timeoutInterval = 30
-        requst.networkServiceType  = .networkServiceTypeCallSignaling
+        requst.networkServiceType  = .callSignaling
         self.websocketTask = self.session?.webSocketTask(with: requst)
         self.websocketTask?.resume()
     }
@@ -110,18 +110,18 @@ public class WebSocketClient: NSObject,URLSessionWebSocketDelegate {
     
     // MARK: URLSESSION Protocols
 
-    private func urlSession(_ session: URLSession, webSocketTask: URLSessionWebSocketTask, didOpenWithProtocol protocol: String?) {
+    public func urlSession(_ session: URLSession, webSocketTask: URLSessionWebSocketTask, didOpenWithProtocol protocol: String?) {
         print("Connected to server")
         self.startTime()
 //        self.receive()
 //        self.send()
     }
 
-    private func urlSession(_ session: URLSession, webSocketTask: URLSessionWebSocketTask, didCloseWith closeCode: URLSessionWebSocketTask.CloseCode, reason: Data?) {
+    public func urlSession(_ session: URLSession, webSocketTask: URLSessionWebSocketTask, didCloseWith closeCode: URLSessionWebSocketTask.CloseCode, reason: Data?) {
         print("Disconnect from Server \(String(describing: reason))")
         self.stopTime()
     }
-    func urlSession(_ session:URLSession, didReceive challenge:URLAuthenticationChallenge, completionHandler:@escaping (URLSession.AuthChallengeDisposition,URLCredential?) -> Void) {
+    public func urlSession(_ session:URLSession, didReceive challenge:URLAuthenticationChallenge, completionHandler:@escaping (URLSession.AuthChallengeDisposition,URLCredential?) -> Void) {
    
               guard challenge.protectionSpace.authenticationMethod == "NSURLAuthenticationMethodServerTrust"else {
                   return

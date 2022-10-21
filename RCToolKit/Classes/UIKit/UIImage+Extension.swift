@@ -9,7 +9,6 @@ import Accelerate
 import Foundation
 import UIKit
 
-extension UIImage: ExtensionCompatibleValue {}
 extension CVPixelBuffer: ExtensionCompatibleValue {}
 extension CIImage: ExtensionCompatibleValue {}
 extension CGImage: ExtensionCompatibleValue {}
@@ -56,7 +55,7 @@ public extension ExtensionWrapper where Base == UIImage {
         guard let ciImage = base.ciImage else {
             return nil
         }
-        let filter = CIFilter(name: "CIGaussianBlur", withInputParameters: [kCIInputImageKey: ciImage, "inputRadius": level])
+        let filter = CIFilter(name: "CIGaussianBlur", parameters: [kCIInputImageKey: ciImage, "inputRadius": level])
         guard let outputCIImage = filter?.outputImage else { return nil }
         return UIImage(ciImage: outputCIImage)
     }
@@ -134,7 +133,7 @@ public extension ExtensionWrapper where Base == UIImage {
     }
 
     func base64()->String? {
-        let data = UIImagePNGRepresentation(base)
+        let data = base.pngData()
         return data?.base64EncodedString(options: .lineLength64Characters)
     }
 
@@ -189,7 +188,7 @@ public extension ExtensionWrapper where Base == UIImage {
         context?.draw(base.cgImage!, in: rect)
         // Create gradient
         let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let colors = gradientColors.map { (color: UIColor)->AnyObject? in color.cgColor as AnyObject! } as NSArray
+        let colors = gradientColors.map { (color: UIColor)->AnyObject? in color.cgColor as AnyObject? } as NSArray
         let gradient: CGGradient
         if locations.count > 0 {
             let cgLocations = locations.map { CGFloat($0) }
@@ -326,7 +325,7 @@ public extension ExtensionWrapper where Base == UIImage.Type {
         let context = UIGraphicsGetCurrentContext()
 
         let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let colors = gradientColors.map { (color: UIColor)->AnyObject! in color.cgColor as AnyObject! } as NSArray
+        let colors = gradientColors.map { (color: UIColor)->AnyObject? in color.cgColor as AnyObject? } as NSArray
         let gradient: CGGradient
         if locations.count > 0 {
             let cgLocations = locations.map { CGFloat($0) }
