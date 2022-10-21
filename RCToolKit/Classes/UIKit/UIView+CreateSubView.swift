@@ -219,4 +219,19 @@ public extension ExtensionWrapper where Base: UIView {
         return self
     }
     
+    @discardableResult
+    func removeAllSubViews()->ExtensionWrapper {
+        base.subviews.forEach { sub in
+            sub.removeFromSuperview()
+        }
+        return self
+    }
+    @discardableResult
+    func removeSubView(_ subView:UIView) ->ExtensionWrapper {
+        if base.subviews.contains(subView) {
+            subView.removeFromSuperview()
+        }
+        return self
+    }
+    
 }
