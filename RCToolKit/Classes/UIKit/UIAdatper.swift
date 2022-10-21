@@ -124,6 +124,17 @@ extension Double: AdapterEable {
         return lsh * Double(rsh)
     }
 }
+extension Int:AdapterEable {
+    public static func * (lsh: Int, rsh: CGFloat) -> Int {
+        return Int(CGFloat(lsh) * rsh)
+    }
+}
+extension UInt:AdapterEable {
+    public static func * (lsh: UInt, rsh: CGFloat) -> UInt {
+        return UInt(CGFloat(lsh) * rsh)
+    }
+}
+
 
 extension UIEdgeInsets: AdapterEable {
     public static func * (lsh: UIEdgeInsets, rsh: CGFloat) -> UIEdgeInsets {
