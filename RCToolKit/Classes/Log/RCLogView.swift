@@ -60,7 +60,7 @@ public class RCLogView: UIView {
     private var dataSource:Array<RCLogMessage> = []
     private let logCellId = "logCellId"
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         self.addSubview(self.tableView)
         
@@ -68,7 +68,9 @@ public class RCLogView: UIView {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.register(LogCell.self, forCellReuseIdentifier: logCellId)
-        
+        self.tableView.backgroundView?.backgroundColor = .clear
+        self.tableView.backgroundColor = .clear
+        self.tableView.tableFooterView = UIView()
         self.tableView.snp.makeConstraints { make in
             make.edges.equalTo(UIEdgeInsets.zero)
         }
