@@ -46,6 +46,18 @@ public enum LogLevel {
             return "All"
         }
     }
+    var color:UIColor {
+        switch self {
+        case .off:
+            return .rc.rgba(r: 155, g: 155, b: 155, a: 1)
+        case .debug,.info,.all:
+            return .rc.rgba(r: 74, g: 144, b: 226, a: 1)
+        case .warning:
+            return .rc.rgba(r: 254, g: 221, b: 86, a: 1)
+        case .error:
+            return .rc.rgba(r: 254, g: 55, b: 95, a: 1)
+        }
+    }
 }
 
 public protocol logFomatreralbel {
