@@ -152,6 +152,7 @@ public extension ExtensionWrapper where Base: UIView {
         if #available(iOS 11.0, *) {
             tableView.contentInsetAdjustmentBehavior = .never
         }
+        base.addSubview(tableView)
         return tableView
     }
     
