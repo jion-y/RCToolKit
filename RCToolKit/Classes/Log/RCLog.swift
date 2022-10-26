@@ -110,7 +110,8 @@ public extension RCLog {
              tag: String = "",
              file: String = #file,
              function: String = #function,
-             line: Int = #line)
+             line: Int = #line,
+             isTagLog:Bool = false)
     {
         if !invalidLogLevel(level: level) { return }
         let msg = RCLogMessage(type: level,
@@ -123,7 +124,13 @@ public extension RCLog {
                                file: file,
                                tag: tag)
         self.loggers.forEach { n in
-            n.logger.logMessage(msg: msg)
+            if isTagLog && n.tag == tag {
+                n.logger.logMessage(msg: msg)
+            }
+            if !isTagLog {
+                n.logger.logMessage(msg: msg)
+            }
+            
         }
     }
 
@@ -134,6 +141,17 @@ public extension RCLog {
             }
         }
         let node = RCLogNode(level: level, logger: logger, queue: self.logQueue)
+        self.loggers.append(node)
+    }
+    
+    func addTagLogger(logger: LogOutputable, level: LogLevel,tag:String) {
+        self.loggers.forEach { node in
+            if logger == node.logger, node.level == level {
+                return
+            }
+        }
+        let node = RCLogNode(level: level, logger: logger, queue: self.logQueue)
+        node.tag = tag
         self.loggers.append(node)
     }
 
@@ -179,9 +197,23 @@ public extension ExtensionWrapper where Base == RCLog.Type  {
     func addLogger(logger: LogOutputable) {
         RCLog.default.addLogger(logger: logger, level: .all)
     }
+    func addTagLogger(logger: LogOutputable,tag:String) {
+        RCLog.default.addTagLogger(logger: logger, level: .all, tag: tag)
+    }
+    
+    
 
      func removeLogger(logger: LogOutputable) {
         RCLog.default.removeLogger(logger: logger)
+    }
+    
+    func logTag(message: String,
+                tag: String,
+                level:LogLevel = .info,
+                file: String = #file,
+                function: String = #function,
+                line: Int = #line) {
+        RCLog.default.log(asynchronous: true, level: level, message: message, tag: tag, file: file, function: function, line: line,isTagLog: true)
     }
 
     func logInfo(message: String,
@@ -250,6 +282,7 @@ public class RCLogNode {
     public var logger: LogOutputable
     public var level: LogLevel = .off
     public var loggerQueue: DispatchQueue = .main
+    public var tag:String = String.rc.empty
     init(level: LogLevel, logger: LogOutputable, queue: DispatchQueue) {
         self.logger = logger
         self.level = level

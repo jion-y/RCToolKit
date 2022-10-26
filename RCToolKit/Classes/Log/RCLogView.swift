@@ -70,11 +70,12 @@ public class RCLogView: UIView {
         self.tableView.register(LogCell.self, forCellReuseIdentifier: logCellId)
         self.tableView.backgroundView?.backgroundColor = .clear
         self.tableView.backgroundColor = .clear
+        self.tableView.separatorStyle = .none
         self.tableView.tableFooterView = UIView()
         self.tableView.snp.makeConstraints { make in
             make.edges.equalTo(UIEdgeInsets.zero)
         }
-        
+
     }
     
     required init?(coder: NSCoder) {
