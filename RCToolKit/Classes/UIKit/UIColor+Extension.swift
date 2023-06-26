@@ -174,5 +174,79 @@ public extension ExtensionWrapper where Base == UIColor.Type {
     var zhuganzi:UIColor {
         return hexString("#541E24")
     }
+    ///葡萄紫
+    var putaozi:UIColor {
+        return hexString("#4C1F24")
+    }
+    ///暗紫苑红
+    var anziyuanhong:UIColor {
+        return hexString("#82202B")
+    }
+    ///殷红
+    var darkishRed:UIColor {
+        return hexString("#82111F")
+    }
+    ///草茉莉红
+    var caomolihong:UIColor {
+        return hexString("#EF475D")
+    }
+    ///酱紫
+    var jiangzi:UIColor {
+        return hexString("#4D1018")
+    }
     
+    //山茶红
+    var shanchahong:UIColor {
+        return hexString("#ED556A")
+    }
+    ///锌灰
+    var xinhui:UIColor {
+        return hexString("#7A7374")
+    }
+    ///海棠红
+    var haitanghong:UIColor {
+        return hexString("#EE2746")
+    }
+    ///李紫
+    var plumPurple:UIColor {
+        return hexString("#2B1216")
+    }
+    
+    ///石竹红
+    var shizhuhong:UIColor {
+        return hexString("#EE4863")
+    }
+    ///淡茜红
+    var danqianhong:UIColor {
+        return hexString("#E77C8E")
+    }
+    ///金鱼紫色
+    var jinyuzi:UIColor {
+        return hexString("#500a16")
+    }
+    ///山梨豆红
+    var shanlidouhong:UIColor {
+        return hexString("#c27c88")
+    }
+    ///鼠背灰
+    var shubeihui:UIColor {
+        return hexString("#73575c")
+    }
+    ///淡蕊香红
+    var danruixianghong:UIColor {
+        return hexString("#ee4866")
+    }
+    
+    ///甘蔗紫
+    var ganzhezi:UIColor {
+        return hexString("#621624")
+    }
+    ///月季红
+    var yuejihong:UIColor {
+        return hexString("#ce5777")
+    }
+    ///尖晶玉红
+    var jianjingyuhong:UIColor {
+        return hexString("#cc163a")
+    }
 }
