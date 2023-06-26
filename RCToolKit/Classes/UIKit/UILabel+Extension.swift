@@ -89,6 +89,7 @@ public extension ExtensionWrapper where Base == UILabel {
         return self
     }
     @discardableResult
+    @available(iOS 14.0, *)
     func lineBreakStrategy(_ lineBreakStrategy:NSParagraphStyle.LineBreakStrategy) ->ExtensionWrapper {
         base.lineBreakStrategy = lineBreakStrategy
         return self
