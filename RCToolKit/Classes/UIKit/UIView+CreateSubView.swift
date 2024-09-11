@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SnapKit
 public extension ExtensionWrapper where Base: UIView {
     /// 往当前视图添加一个子视图
     /// - Parameters:
@@ -105,6 +106,7 @@ public extension ExtensionWrapper where Base: UIView {
     ///   - action: 事件响应方法
     ///   - event:响应事件
     /// - Returns: 按钮控件
+    @discardableResult
      func addButton(rect: CGRect, title: String, titleColor: UIColor, target: Any?, action: Selector?, event: UIControl.Event?) -> UIButton {
         return addButton(rect: rect,
                             title: title,
@@ -125,6 +127,7 @@ public extension ExtensionWrapper where Base: UIView {
     ///   - action: 事件响应方法
     ///   - event: 响应事件
     /// - Returns: 按钮控件
+     @discardableResult
      func addButton(rect: CGRect, image: UIImage, target: Any?, action: Selector?, event: UIControl.Event?) -> UIButton {
         return addButton(rect: rect,
                             title: "",
@@ -232,6 +235,11 @@ public extension ExtensionWrapper where Base: UIView {
         if base.subviews.contains(subView) {
             subView.removeFromSuperview()
         }
+        return self
+    }
+    @discardableResult
+    func makeSNP(_ closure: (_ make: ConstraintMaker) -> Void)->ExtensionWrapper{
+        base.snp.makeConstraints(closure)
         return self
     }
     

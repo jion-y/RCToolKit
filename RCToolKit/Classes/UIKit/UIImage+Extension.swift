@@ -13,6 +13,11 @@ extension CVPixelBuffer: ExtensionCompatibleValue {}
 extension CIImage: ExtensionCompatibleValue {}
 extension CGImage: ExtensionCompatibleValue {}
 
+enum RCImageError:Error {
+     case failure
+     case noFace
+}
+
 public enum UIImageContentMode {
     case scaleToFill, scaleAspectFit, scaleAspectFill
 }
@@ -83,7 +88,7 @@ public extension ExtensionWrapper where Base == UIImage {
         let size = base.size
         let imageMaxLenght = max(size.width, size.height)
         let radio = imageMaxLenght / maxLength
-        let targetSize = CGSize(width: size.width * radio, height: size.height * radio)
+        let targetSize = CGSize(width: size.width / radio, height: size.height / radio)
         return scaleTo(size: targetSize)
     }
 
@@ -286,6 +291,19 @@ public extension ExtensionWrapper where Base == UIImage {
         let newImage = UIImage(cgImage: (context?.makeImage()!)!, scale: base.scale, orientation: base.imageOrientation)
         return newImage
     }
+    @available(iOS 13.0.0, *)
+    func faceRecognition() async -> [CIFaceFeature]? {
+          await  withCheckedContinuation { continuation in
+              DispatchQueue.global().async {
+                guard let personciImage = CIImage(image: base) else {
+                    continuation.resume(returning: nil)
+                    return
+                }
+                let result = personciImage.rc.detecteface()
+                  continuation.resume(returning:result)
+            }
+        }
+    }
 }
 
 public extension ExtensionWrapper where Base == UIImage.Type {
@@ -389,6 +407,18 @@ public extension ExtensionWrapper where Base == UIImage.Type {
         UIGraphicsEndImageContext()
         return image
     }
+    
+    func image(bundle:String,imageName:String)->UIImage? {
+        guard  let bundlePath = Bundle.main.path(forResource: bundle, ofType: ".bundle") else {
+            return nil
+        }
+       let dble = Bundle(url: URL(fileURLWithPath: bundlePath))
+        guard  let imagePath = dble?.path(forResource: imageName, ofType:nil) else {
+            return nil
+        }
+        return  UIImage(named: imageName, in: dble,compatibleWith: .none)
+    }
+    
 }
 
 public extension ExtensionWrapper where Base == CVPixelBuffer {
@@ -465,6 +495,13 @@ public extension ExtensionWrapper where Base == CIImage {
         }
         return nil
     }
+    
+    func detecteface() ->[CIFaceFeature]? {
+        let accuracy = [CIDetectorAccuracy: CIDetectorAccuracyHigh]
+        let faceDetector = CIDetector(ofType: CIDetectorTypeFace, context: nil, options: accuracy)
+        return faceDetector?.features(in: base) as? [CIFaceFeature]
+    }
+
 }
 
 public extension ExtensionWrapper where Base == CGImage {

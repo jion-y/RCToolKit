@@ -10,10 +10,16 @@ extension String:ExtensionCompatible {}
 
 public extension ExtensionWrapper where Base == String.Type {
     var empty:String { get { return "" }  }
+ 
 }
 
 public extension ExtensionWrapper where Base == String {
     var isEmpty:Bool { get { return base.isEmpty }  }
+    
+    func localize(bundle:String = "Main")->String {
+        return Localized.getLocaizedString(for: base, in: bundle)
+    }
+    
 }
 
 
