@@ -12,6 +12,7 @@ extension Float:ExtensionCompatible {}
 extension Double:ExtensionCompatible {}
 
 extension CGSize:ExtensionCompatible {}
+extension CGFloat:ExtensionCompatible {}
 
 public extension ExtensionWrapper {
     var threadId:__uint64_t {
