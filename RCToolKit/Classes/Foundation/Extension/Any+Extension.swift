@@ -57,10 +57,25 @@ public extension ExtensionWrapper where Base == Float {
     var double:Float {
         return base * 2.0
     }
+    var min:Float {
+        return Float(CGFLOAT_MIN)
+    }
+    var max:Float {
+        return Float(CGFLOAT_MAX)
+    }
 }
 public extension ExtensionWrapper where Base == CGFloat {
     func randiansToDegress(_ radians:CGFloat) ->CGFloat {
         return radians * (.pi / 360.0)
+    }
+}
+
+public extension ExtensionWrapper where Base == CGFloat.Type {
+    var min:CGFloat {
+        return CGFloat(CGFLOAT_MIN)
+    }
+    var max:CGFloat {
+        return CGFloat(CGFLOAT_MAX)
     }
 }
 public extension ExtensionWrapper where Base == CGSize {
