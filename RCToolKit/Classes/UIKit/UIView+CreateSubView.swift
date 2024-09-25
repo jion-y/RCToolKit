@@ -34,6 +34,9 @@ public extension ExtensionWrapper where Base: UIView {
         self.base.addSubview(imageView)
         return imageView
     }
+    func addImageView(imageName:String = "",rect: CGRect = .zero, contentMode:  UIView.ContentMode = .scaleToFill)-> UIImageView {
+        return addImageView(image: UIImage(named: imageName),rect: rect,contentMode:contentMode)
+    }
   
     /// 添加文本控件
     /// - Parameters:
