@@ -58,8 +58,8 @@ public extension ExtensionWrapper where Base == UIColor {
 }
 
 public extension ExtensionWrapper where Base == UIColor.Type {
-    func rgba(r: UInt, g: UInt, b: UInt, a: UInt) -> UIColor {
-        return UIColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(a))
+    func rgba(r: UInt, g: UInt, b: UInt, a: CGFloat) -> UIColor {
+        return UIColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: a)
     }
     
     func hexString(_ hexString: String) ->UIColor {
