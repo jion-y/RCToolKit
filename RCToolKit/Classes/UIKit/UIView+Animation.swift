@@ -8,8 +8,6 @@
 import Foundation
 import UIKit
 
-extension UIView:ExtensionCompatible{}
-
 public enum UIViewAnimationFlipDirection {
     case Top
     case Left
@@ -125,6 +123,18 @@ public extension ExtensionWrapper where Base : UIView {
         baseAnimation.autoreverses = true
         base.layer.add(baseAnimation, forKey: "pulse")
     }
+    func scaleAnimation(minScale:CGFloat,maxScale:CGFloat,duration:TimeInterval,repeated:Bool) {
+        //一个先缩放到最小动画在放大动画
+        let keyAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
+        keyAnimation.timingFunctions = [CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)]
+        keyAnimation.duration = duration
+        keyAnimation.repeatCount =  Float(repeated ? Int.max : 1)
+        let minMiddValue = (1.0 + minScale ) / 2
+        let maxMiddValue = (1.0 + maxScale ) / 2
+        keyAnimation.values = [1, minMiddValue,minScale,minMiddValue,1,maxMiddValue,maxScale,maxMiddValue, 1]
+        base.layer.add(keyAnimation, forKey: "scale")
+        
+    }
     func filpWithDuration(duration:TimeInterval,direction:UIViewAnimationFlipDirection,repeatCount:Float,autoreverse:Bool = true) {
         
         let subtype = direction.subDescript()
@@ -158,3 +168,13 @@ public extension ExtensionWrapper where Base : UIView {
     }
     
 }
+public extension ExtensionWrapper where Base == UIView.Type {
+    var emptyView:UIView {
+        get {
+            return UIView(frame: .zero)
+        }
+    }
+}
+
+
+
