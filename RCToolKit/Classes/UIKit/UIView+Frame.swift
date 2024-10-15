@@ -118,6 +118,13 @@ extension ExtensionWrapper where Base: UIView {
             return self.width + self.x
         }
     }
+    @discardableResult
+    public func makeConstraints(edge:UIEdgeInsets = .zero) ->ExtensionWrapper {
+        base.snp.makeConstraints { make in
+            make.edges.equalTo(edge)
+        }
+        return self
+    }
 }
 
 extension ExtensionWrapper where Base == UIView.Type  {

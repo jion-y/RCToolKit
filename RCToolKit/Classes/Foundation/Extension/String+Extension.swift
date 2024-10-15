@@ -22,6 +22,7 @@ public extension ExtensionWrapper where Base == String {
     
     ///图片名称的字符串可以调这个方法直接加载对应的图片
     func loadToImage()->UIImage? {
+     if self.isEmpty { return nil } 
       return UIImage(named: base)
     }
     ///文件路径字符串调用该方法直接读取文件内容
@@ -30,6 +31,12 @@ public extension ExtensionWrapper where Base == String {
             return nil
         }
         return try? Data(contentsOf: URL(fileURLWithPath: base))
+    }
+    
+    var hexColor:UIColor {
+        get {
+            return UIColor.rc.hexString(self.base)
+        }
     }
     
 }

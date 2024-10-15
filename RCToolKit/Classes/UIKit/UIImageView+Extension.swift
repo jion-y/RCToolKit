@@ -9,7 +9,6 @@ import Foundation
 extension UIImageView: ExtensionCompatibleValue {}
 
 public extension ExtensionWrapper where Base == UIImageView {
-    
     var isAnimating:Bool {
         return base.isAnimating
     }
@@ -43,5 +42,12 @@ public extension ExtensionWrapper where Base == UIImageView {
         base.animationRepeatCount = animationRepeatCount
         return self
     }
-    
+}
+
+public extension ExtensionWrapper where Base == UIImageView.Type {
+    var empty: UIImageView {
+        get {
+            return UIImageView()
+        }
+    }
 }

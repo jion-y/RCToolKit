@@ -168,6 +168,8 @@ public extension ExtensionWrapper where Base : UIView {
     }
     
 }
+
+//@available(*, deprecated, message: "准备放弃这种写法统一为 UI 控件实现 EmptyAble 协议")
 public extension ExtensionWrapper where Base == UIView.Type {
     var emptyView:UIView {
         get {
@@ -175,6 +177,13 @@ public extension ExtensionWrapper where Base == UIView.Type {
         }
     }
 }
+
+//extension UIView:EmptyAble {
+//    public var empty: UIView {
+//        return UIView(frame: .zero)
+//    }
+//    public typealias T = UIView
+//}
 
 
 

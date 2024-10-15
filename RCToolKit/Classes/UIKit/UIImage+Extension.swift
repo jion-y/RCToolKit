@@ -509,3 +509,11 @@ public extension ExtensionWrapper where Base == CGImage {
         return CIImage(cgImage: base)
     }
 }
+
+public extension ExtensionWrapper where Base == UIImage.Type {
+    var empty: UIImage {
+        get {
+            return UIImage()
+        }
+    }
+}

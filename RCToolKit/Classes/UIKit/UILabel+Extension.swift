@@ -96,3 +96,19 @@ public extension ExtensionWrapper where Base == UILabel {
     }
     
 }
+
+public extension ExtensionWrapper where Base == UILabel.Type {
+    var empty: UILabel {
+        get {
+            return UILabel(frame: .zero)
+        }
+    }
+}
+//
+//extension UILabel:EmptyAble {
+//    public var empty: UILabel {
+//        return UILabel(frame: .zero)
+//    }
+//    public typealias T = UILabel
+//    
+//}
