@@ -38,8 +38,8 @@ extension SKPaymentTransactionState: CustomDebugStringConvertible {
 
 open class RCPaymentQueueDataProvider: NSObject {
     private let paymentsController: PaymentsController
-//    private let restorePurchasesController: RestorePurchasesController
-//    private let completeTransactionsController: CompleteTransactionsController
+    private let restorePurchasesController: RestorePurchasesController = RestorePurchasesController()
+    private let completeTransactionsController: CompleteTransactionsController = CompleteTransactionsController()
     let paymentQueue: SKPaymentQueue
 //    private var entitlementRevocation: EntitlementRevocation?
     init(paymentQueue: SKPaymentQueue = SKPaymentQueue.default(), paymentsController: PaymentsController = PaymentsController()) {
@@ -63,6 +63,27 @@ open class RCPaymentQueueDataProvider: NSObject {
         paymentQueue.add(skPayment)
         paymentsController.append(payment)
     }
+    
+    func restorePurchases(_ restorePurchases: RestorePurchases) {
+//        assertCompleteTransactionsWasCalled()
+        
+        if restorePurchasesController.restorePurchases != nil {
+            return
+        }
+        
+        paymentQueue.restoreCompletedTransactions(withApplicationUsername: restorePurchases.applicationUsername)
+        
+        restorePurchasesController.restorePurchases = restorePurchases
+    }
+    
+    func completeTransactions(_ completeTransactions: CompleteTransactions) {
+        guard completeTransactionsController.completeTransactions == nil else {
+            print("SwiftyStoreKit.completeTransactions() should only be called once when the app launches. Ignoring this call")
+            return
+        }
+        
+        completeTransactionsController.completeTransactions = completeTransactions
+    }
 }
 
 extension RCPaymentQueueDataProvider: SKPaymentTransactionObserver {
@@ -72,9 +93,9 @@ extension RCPaymentQueueDataProvider: SKPaymentTransactionObserver {
         if unhandledTransactions.count > 0 {
             unhandledTransactions = paymentsController.processTransactions(transactions, on: paymentQueue)
             
-            //            unhandledTransactions = restorePurchasesController.processTransactions(unhandledTransactions, on: paymentQueue)
+            unhandledTransactions = restorePurchasesController.processTransactions(unhandledTransactions, on: paymentQueue)
             
-            //            unhandledTransactions = completeTransactionsController.processTransactions(unhandledTransactions, on: paymentQueue)
+            unhandledTransactions = completeTransactionsController.processTransactions(unhandledTransactions, on: paymentQueue)
             
             if unhandledTransactions.count > 0 {
                 let strings = unhandledTransactions.map(\.debugDescription).joined(separator: "\n")

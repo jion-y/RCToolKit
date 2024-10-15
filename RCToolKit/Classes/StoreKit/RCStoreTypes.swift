@@ -47,11 +47,11 @@ public enum PurchaseResult {
 public struct Purchase {
     public let productId: String
     public let quantity: Int
-    public let transaction: PaymentTransaction
-    public let originalTransaction: PaymentTransaction?
+    public let transaction: SKPaymentTransaction
+    public let originalTransaction: SKPaymentTransaction?
     public let needsFinishTransaction: Bool
     
-    public init(productId: String, quantity: Int, transaction: PaymentTransaction, originalTransaction: PaymentTransaction?, needsFinishTransaction: Bool) {
+    public init(productId: String, quantity: Int, transaction: SKPaymentTransaction, originalTransaction: SKPaymentTransaction?, needsFinishTransaction: Bool) {
         self.productId = productId
         self.quantity = quantity
         self.transaction = transaction

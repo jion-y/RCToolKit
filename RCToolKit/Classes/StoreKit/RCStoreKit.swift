@@ -9,8 +9,15 @@ import Foundation
 import StoreKit
 
 open class RCStoreKit {
+    
+    public class var canMakePayments: Bool {
+        return SKPaymentQueue.canMakePayments()
+    }
+    
     private let productsProvider: RCStoreProductsnfoDataProvider = .init()
     private let paymentQueueProvider: RCPaymentQueueDataProvider = .init()
+    
+    
     fileprivate static let `default` = RCStoreKit()
 }
 
@@ -48,6 +55,14 @@ public extension RCStoreKit {
     private func purchase(product: SKProduct, quantity: Int, atomically: Bool, applicationUsername: String = "", simulatesAskToBuyInSandbox: Bool = false, paymentDiscount: PaymentDiscount? = nil, completion: @escaping (PurchaseResult) -> Void) {
         paymentQueueProvider.startPayment(Payment(product: product, paymentDiscount: paymentDiscount, quantity: quantity, atomically: atomically, applicationUsername: applicationUsername, simulatesAskToBuyInSandbox: simulatesAskToBuyInSandbox) { resuts in
             completion(self.processPurchaseResult(resuts))
+        })
+    }
+    
+    fileprivate func restorePurchases(atomically: Bool = true, applicationUsername: String = "", completion: @escaping (RestoreResults) -> Void) {
+        
+        paymentQueueProvider.restorePurchases(RestorePurchases(atomically: atomically, applicationUsername: applicationUsername) { results in
+            let results = self.processRestoreResults(results)
+            completion(results)
         })
     }
 
@@ -104,4 +119,10 @@ public extension RCStoreKit {
     class func purchaseProduct(_ product: SKProduct, quantity: Int = 1, atomically: Bool = true, applicationUsername: String = "", simulatesAskToBuyInSandbox: Bool = false, paymentDiscount: PaymentDiscount? = nil, completion: @escaping (PurchaseResult) -> Void) {
         self.default.purchase(product: product, quantity: quantity, atomically: atomically, applicationUsername: applicationUsername, simulatesAskToBuyInSandbox: simulatesAskToBuyInSandbox, paymentDiscount: paymentDiscount, completion: completion)
     }
+    
+    public class func restorePurchases(atomically: Bool = true, applicationUsername: String = "", completion: @escaping (RestoreResults) -> Void) {
+        
+        self.default.restorePurchases(atomically: atomically, applicationUsername: applicationUsername, completion: completion)
+    }
+    
 }
