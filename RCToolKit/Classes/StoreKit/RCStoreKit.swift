@@ -120,7 +120,7 @@ public extension RCStoreKit {
         self.default.purchase(product: product, quantity: quantity, atomically: atomically, applicationUsername: applicationUsername, simulatesAskToBuyInSandbox: simulatesAskToBuyInSandbox, paymentDiscount: paymentDiscount, completion: completion)
     }
     
-    public class func restorePurchases(atomically: Bool = true, applicationUsername: String = "", completion: @escaping (RestoreResults) -> Void) {
+    class func restorePurchases(atomically: Bool = true, applicationUsername: String = "", completion: @escaping (RestoreResults) -> Void) {
         
         self.default.restorePurchases(atomically: atomically, applicationUsername: applicationUsername, completion: completion)
     }
