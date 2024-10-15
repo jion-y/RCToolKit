@@ -14,7 +14,9 @@ open class RCStoreKit2 {
    public class func getProductInfo(_ productIds: Set<String>) async -> RetrieveResults {
         await withCheckedContinuation { continuation in
             let _ = RCStoreKit.getProductInfo(productIds) { result in
-                continuation.resume(returning: result)
+                DispatchQueue.rc.safeRunMainQueue {
+                    continuation.resume(returning: result)
+                }
             }
         }
     }
@@ -22,7 +24,9 @@ open class RCStoreKit2 {
     public class func purchaseProduct(_ productId: String, quantity: Int = 1, atomically: Bool = true, applicationUsername: String = "", simulatesAskToBuyInSandbox: Bool = false) async -> PurchaseResult {
         await withCheckedContinuation { continuation in
             RCStoreKit.purchaseProduct(productId, quantity: quantity, atomically: atomically, applicationUsername: applicationUsername, simulatesAskToBuyInSandbox: simulatesAskToBuyInSandbox) { result in
-                continuation.resume(returning: result)
+                DispatchQueue.rc.safeRunMainQueue {
+                    continuation.resume(returning: result)
+                }
             }
         }
     }
@@ -30,7 +34,9 @@ open class RCStoreKit2 {
     public class func purchaseProduct(_ product: SKProduct, quantity: Int = 1, atomically: Bool = true, applicationUsername: String = "", simulatesAskToBuyInSandbox: Bool = false, paymentDiscount: PaymentDiscount? = nil) async -> PurchaseResult {
         await withCheckedContinuation { continuation in
             RCStoreKit.purchaseProduct(product, quantity: quantity, atomically: atomically, applicationUsername: applicationUsername, simulatesAskToBuyInSandbox: simulatesAskToBuyInSandbox) { result in
-                continuation.resume(returning: result)
+                DispatchQueue.rc.safeRunMainQueue {
+                    continuation.resume(returning: result)
+                }
             }
         }
     }
@@ -38,7 +44,9 @@ open class RCStoreKit2 {
     public class func restorePurchases(atomically: Bool = true, applicationUsername: String = "") async -> RestoreResults {
         await withCheckedContinuation { continuation in
             RCStoreKit.restorePurchases(atomically: atomically, applicationUsername: applicationUsername) { result in
-                continuation.resume(returning: result)
+                DispatchQueue.rc.safeRunMainQueue {
+                    continuation.resume(returning: result)
+                }
             }
         }
     }
