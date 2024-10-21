@@ -87,3 +87,11 @@ public extension ExtensionWrapper where Base == CGSize {
         return CGSize(width: base.width * scale, height: base.height * scale)
     }
 }
+
+public extension ExtensionWrapper where Base:Encodable {
+    func toJsonString() -> String? {
+        guard let data = try? JSONEncoder().encode(base) else { return nil }
+        return String(data: data, encoding: .utf8)
+    }
+}
+

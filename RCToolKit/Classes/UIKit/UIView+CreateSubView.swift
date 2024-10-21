@@ -59,7 +59,7 @@ public extension ExtensionWrapper where Base: UIView {
     ///   - textColor: 文本颜色
     ///   - bgColor: 背景颜色
     /// - Returns: 文本控件
-     func addLabel(font: UIFont, text: String, textColor: UIColor, bgColor: UIColor) -> UILabel {
+    func addLabel(font: UIFont, text: String, textColor: UIColor = .white, bgColor: UIColor = .clear) -> UILabel {
         let label = UILabel(frame: .zero)
         label.font = font
         label.text = text
@@ -243,6 +243,13 @@ public extension ExtensionWrapper where Base: UIView {
     @discardableResult
     func makeSNP(_ closure: (_ make: ConstraintMaker) -> Void)->ExtensionWrapper{
         base.snp.makeConstraints(closure)
+        return self
+    }
+    @discardableResult
+    func addSubViews(_ subs:Array<UIView>)->ExtensionWrapper {
+        subs.forEach { sub in
+            base.addSubview(sub)
+        }
         return self
     }
     
