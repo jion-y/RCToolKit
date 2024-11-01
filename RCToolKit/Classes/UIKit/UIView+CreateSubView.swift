@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import SnapKit
+import AuthenticationServices
 public extension ExtensionWrapper where Base: UIView {
     /// 往当前视图添加一个子视图
     /// - Parameters:
@@ -252,5 +253,14 @@ public extension ExtensionWrapper where Base: UIView {
         }
         return self
     }
+    
+}
+
+
+extension UIView:ASAuthorizationControllerPresentationContextProviding {
+    public func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return self.window!
+    }
+    
     
 }

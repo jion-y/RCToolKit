@@ -10,7 +10,7 @@ import Foundation
 var bundlePathCache: [String: String] = [:]
 var bundleCache: [String: Bundle] = [:]
 
-public class Localized {
+open  class Localized {
     static var KCustomLanguageKey: String = "KCustomLanguageKey"
     static var gCustomLanguage: String?
     static var gIgnoreTraditionChinese: Bool = true

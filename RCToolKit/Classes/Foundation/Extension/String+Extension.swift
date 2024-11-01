@@ -6,10 +6,25 @@
 //
 
 import Foundation
+import CryptoKit
 extension String:ExtensionCompatible {}
 
 public extension ExtensionWrapper where Base == String.Type {
     var empty:String { get { return "" }  }
+    func randomNonceString(lenght:Int = 32) ->String {
+        precondition(lenght > 0)
+        var randomBytes = Array<UInt8>(repeating: 0, count: lenght)
+        let errorCode = SecRandomCopyBytes(kSecRandomDefault, randomBytes.count, &randomBytes)
+        if errorCode != errSecSuccess {
+            fatalError("Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)")
+        }
+        let charset:[Character] = Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
+        let nonce = randomBytes.map { byte in
+          // Pick a random character from the set, wrapping around if needed.
+          charset[Int(byte) % charset.count]
+        }
+        return String(nonce)
+    }
  
 }
 
@@ -76,6 +91,18 @@ public extension ExtensionWrapper where Base == String {
         return value
         
     }
+    
+    @available(iOS 13, *)
+    func sha256() -> String {
+      let inputData = Data(base.utf8)
+      let hashedData = SHA256.hash(data: inputData)
+      let hashString = hashedData.compactMap {
+        String(format: "%02x", $0)
+      }.joined()
+
+      return hashString
+    }
+    
 }
 
 

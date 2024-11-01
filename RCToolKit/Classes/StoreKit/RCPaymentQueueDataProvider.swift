@@ -42,9 +42,16 @@ open class RCPaymentQueueDataProvider: NSObject {
     private let completeTransactionsController: CompleteTransactionsController = CompleteTransactionsController()
     let paymentQueue: SKPaymentQueue
 //    private var entitlementRevocation: EntitlementRevocation?
+    
+    deinit {
+        paymentQueue.remove(self)
+    }
+    
     init(paymentQueue: SKPaymentQueue = SKPaymentQueue.default(), paymentsController: PaymentsController = PaymentsController()) {
         self.paymentQueue = paymentQueue
         self.paymentsController = paymentsController
+        super.init()
+        paymentQueue.add(self)
     }
     
     func startPayment(_ payment: Payment) {
@@ -103,4 +110,24 @@ extension RCPaymentQueueDataProvider: SKPaymentTransactionObserver {
             }
         }
     }
+    public func paymentQueue(_ queue: SKPaymentQueue, didRevokeEntitlementsForProductIdentifiers productIdentifiers: [String]) {
+//        self.entitlementRevocation?.callback(productIdentifiers)
+    }
+    
+    public func paymentQueue(_ queue: SKPaymentQueue, removedTransactions transactions: [SKPaymentTransaction]) {
+        
+    }
+    
+    public func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
+        restorePurchasesController.restoreCompletedTransactionsFailed(withError: error)
+    }
+    
+    public func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
+        restorePurchasesController.restoreCompletedTransactionsFinished()
+    }
+    
+    public  func paymentQueue(_ queue: SKPaymentQueue, updatedDownloads downloads: [SKDownload]) {
+//        updatedDownloadsHandler?(downloads)
+    }
+    
 }
