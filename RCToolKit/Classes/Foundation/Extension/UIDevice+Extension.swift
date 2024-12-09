@@ -102,7 +102,7 @@ public extension ExtensionWrapper where Base == UIDevice.Type {
         let infoDic = Bundle.main.infoDictionary
         let shortVersion = infoDic?["CFBundleShortVersionString"] ?? "unhnow"
         let buildVersion = infoDic?["CFBundleVersion"] ?? "unhnow"
-        return "\(shortVersion)_\(buildVersion)"
+        return "\(shortVersion).\(buildVersion)"
     }
 
     func deviceInfo() -> String {

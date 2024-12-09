@@ -19,7 +19,9 @@ public extension ExtensionWrapper {
         get {
             let thrid = UnsafeMutablePointer<__uint64_t>.allocate(capacity: 1)
             if  pthread_threadid_np(nil,thrid) == 0 {
-                return thrid.pointee
+                let threadId = thrid.pointee
+                thrid.deallocate()
+                return threadId
             }
             return 0;
         }

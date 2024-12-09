@@ -178,7 +178,7 @@ public extension ThreadSafeArray {
 
     func remove(at index: Int, completion: ((Element)->Void)? = nil) {
         pthread_rwlock_wrlock(&lock)
-        if index > 0, index < count {
+        if index >= 0, index < count {
             let e = array.remove(at: index)
             completion?(e)
         }

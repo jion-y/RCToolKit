@@ -57,15 +57,66 @@ public extension ExtensionWrapper where Base == UIImage {
 
     // 简单高斯模糊
     func blurry(level: CGFloat)->UIImage? {
-        guard let ciImage = base.ciImage else {
+        guard let ciImage = CIImage(image: base) else {
             return nil
         }
         let filter = CIFilter(name: "CIGaussianBlur", parameters: [kCIInputImageKey: ciImage, "inputRadius": level])
         guard let outputCIImage = filter?.outputImage else { return nil }
         return UIImage(ciImage: outputCIImage)
+        
     }
 
-    func boxBlur(blurImage: UIImage) {}
+    func boxBlur(blur: CGFloat) -> UIImage? {
+        
+        var blur = blur
+           if blur < 0.0 || blur > 1.0 {
+               blur = 0.5
+           }
+           var boxSize = Int(blur * 50)
+           boxSize = boxSize - (boxSize % 2) + 1
+           
+           let img = base.cgImage!
+           
+           var inBuffer = vImage_Buffer()
+           var outBuffer = vImage_Buffer()
+           var error: vImage_Error!
+           var pixelBuffer: UnsafeMutableRawPointer?
+           
+           // 从CGImage中获取数据
+           let inProvider = img.dataProvider!
+           let inBitmapData = inProvider.data!
+           
+           // 设置从CGImage获取对象的属性
+           inBuffer.width = UInt(img.width)
+           inBuffer.height = UInt(img.height)
+           inBuffer.rowBytes = img.bytesPerRow
+           inBuffer.data = UnsafeMutableRawPointer(mutating: CFDataGetBytePtr(inBitmapData))
+           pixelBuffer = malloc(img.bytesPerRow * img.height)
+           if pixelBuffer == nil {
+               print("No pixel buffer!")
+           }
+           
+           outBuffer.data = pixelBuffer
+           outBuffer.width = UInt(img.width)
+           outBuffer.height = UInt(img.height)
+           outBuffer.rowBytes = img.bytesPerRow
+           
+           error = vImageBoxConvolve_ARGB8888(&inBuffer, &outBuffer, nil, 0, 0, UInt32(boxSize), UInt32(boxSize), nil, UInt32(kvImageEdgeExtend))
+           if error != nil && error != 0 {
+               print("error from convolution \(error)")
+           }
+           
+           let colorSpace = CGColorSpaceCreateDeviceRGB()
+//        kCGImageAlphaNoneSkipFirst
+        let ctx = CGContext(data: outBuffer.data, width: Int(outBuffer.width), height: Int(outBuffer.height), bitsPerComponent: 8, bytesPerRow: outBuffer.rowBytes, space: colorSpace, bitmapInfo:img.bitmapInfo.rawValue)
+           
+           let imageRef = ctx!.makeImage()!
+           let returnImage = UIImage(cgImage: imageRef)
+           
+           pixelBuffer?.deallocate()
+           return returnImage
+        
+    }
 
     func scaleTo(size: CGSize) ->UIImage? {
         var width = base.size.width * 1.0

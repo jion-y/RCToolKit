@@ -28,7 +28,7 @@ public extension ExtensionWrapper where Base: UIView {
     ///   - rect: UIImageView
     ///   - contentMode: 图片填充模式
     /// - Returns: 图片
-     func addImageView(image: UIImage?, rect: CGRect = .zero, contentMode:  UIView.ContentMode = .scaleToFill) -> UIImageView {
+     func addImageView(image: UIImage?, rect: CGRect = .zero, contentMode:  UIView.ContentMode = .scaleAspectFill) -> UIImageView {
         let imageView = UIImageView(frame: rect)
         imageView.image = image
         imageView.contentMode = contentMode
@@ -155,10 +155,13 @@ public extension ExtensionWrapper where Base: UIView {
         tableView.delegate = delegate
         tableView.dataSource = dataSource
         self.base.backgroundColor = .white
-        tableView.tableFooterView = UIView()
+//        tableView.tableFooterView = UIView()
         if #available(iOS 11.0, *) {
             tableView.contentInsetAdjustmentBehavior = .never
         }
+         if #available(iOS 15.0, *) {
+             tableView.sectionHeaderTopPadding = 0
+         }
         base.addSubview(tableView)
         return tableView
     }
@@ -253,6 +256,13 @@ public extension ExtensionWrapper where Base: UIView {
         }
         return self
     }
+//    @discardableResult
+//    func addSubview<T>() ->T where T:UIView {
+//        let view = T.init(frame:.zero)
+//        base.addSubview(view)
+//        return view as T
+//    }
+
     
 }
 

@@ -20,7 +20,7 @@ open class AppleLoginManager:NSObject {
         let nonce = self.nonce
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let request = appleIDProvider.createRequest()
-        request.requestedScopes = [.fullName, .email]
+       request.requestedScopes = [.fullName, .email]
         request.nonce = nonce.rc.sha256()
         let authorizationController = ASAuthorizationController(authorizationRequests: [request])
         authorizationController.delegate = self

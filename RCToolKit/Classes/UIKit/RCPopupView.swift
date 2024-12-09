@@ -19,6 +19,11 @@ open class RCPopupView<T>: UIView where T:RCPopupEnabel {
     public weak var animation: T?
     public override init(frame: CGRect) {
         super.init(frame: frame)
+        self.backgroundColor = .rc.rgba(r: 0, g: 0, b: 0, a: 0.7)
+        let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(RCPopupView.hidden))
+        tap.numberOfTapsRequired = 1
+        tap.numberOfTouchesRequired = 1
+        self.addGestureRecognizer(tap)
         self.animation = T.initize(superView: self) as? T
         self.animation?.layoutView()
         self.rc.setNeedsDisplay()
@@ -43,7 +48,7 @@ open class RCPopupView<T>: UIView where T:RCPopupEnabel {
         }
         
     }
-    public func hidden() {
+    @objc public func hidden() {
         self.animation?.hiddenLayout()
         UIView.animate(withDuration: 0.35) {
             self.rc.setNeedsDisplay()

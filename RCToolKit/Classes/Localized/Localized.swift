@@ -34,7 +34,22 @@ open  class Localized {
                 bundleCache[cacheKey] = db_
             }
         }
+        if let _ = gCustomLanguage {
+            if  let path = bd?.path(forResource: language, ofType: "lproj") {
+                bd = Bundle(path: path)
+            } else {
+                let path = bd?.path(forResource: "en", ofType: "lproj")
+                bd = Bundle(path: path!)
+            }
+            
+        }
         return NSLocalizedString(key,tableName: nil,bundle: bd!,value: value ?? "", comment: "")
+    }
+    open class func setCurrentLanguage(language:String) {
+        
+        UserDefaults.standard.setValue(language, forKey: KCustomLanguageKey)
+        UserDefaults.standard.synchronize()
+        gCustomLanguage = nil
     }
     
     open class func getPreferredLanguage() ->String {

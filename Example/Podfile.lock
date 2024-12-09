@@ -1,6 +1,6 @@
 PODS:
   - CocoaAsyncSocket (7.6.5)
-  - RCToolKit (0.1.0):
+  - RCToolKit (0.1.2):
     - CocoaAsyncSocket
     - SnapKit (~> 5.6.0)
   - SnapKit (5.6.0)
@@ -19,7 +19,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
-  RCToolKit: b17414762e5cdd13248954515824dabf14337043
+  RCToolKit: 8946e82924de0eba07e6c44ba6adbc6ad7a029f4
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
 
 PODFILE CHECKSUM: 42d462aead21121fbdd98c4e2a9187be490b40e8

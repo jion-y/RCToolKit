@@ -12,7 +12,12 @@ open class RCToast {
     open class func showString(str: String, position: ToastPosition = .center, view: UIView? = UIDevice.rc.keyWindow) {
         DispatchQueue.rc.safeRunMainQueue {
             guard let view = view else { return }
-            view.makeToast(str, position: position)
+            var stype =  ToastStyle()
+            stype.backgroundColor = .rc.rgba(r: 180, g: 180, b: 180, a: 0.3)
+            stype.messageFont = .boldSystemFont(ofSize: 14)
+            stype.verticalPadding  =  14
+            stype.cornerRadius = 4
+            view.makeToast(str, position: position,style: stype)
         }
 
     }
