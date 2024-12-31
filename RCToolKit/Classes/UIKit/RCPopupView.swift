@@ -20,10 +20,10 @@ open class RCPopupView<T>: UIView where T:RCPopupEnabel {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .rc.rgba(r: 0, g: 0, b: 0, a: 0.7)
-        let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(RCPopupView.hidden))
-        tap.numberOfTapsRequired = 1
-        tap.numberOfTouchesRequired = 1
-        self.addGestureRecognizer(tap)
+        let btn = self.rc.addButton(rect: .zero, image: UIImage(), target: self, action: #selector(RCPopupView.hidden), event: .touchUpInside)
+        btn.snp.makeConstraints { make in
+            make.top.left.bottom.right.equalTo(0)
+        }
         self.animation = T.initize(superView: self) as? T
         self.animation?.layoutView()
         self.rc.setNeedsDisplay()
@@ -49,11 +49,13 @@ open class RCPopupView<T>: UIView where T:RCPopupEnabel {
         
     }
     @objc public func hidden() {
-        self.animation?.hiddenLayout()
-        UIView.animate(withDuration: 0.35) {
-            self.rc.setNeedsDisplay()
-        } completion: { completion in
-            self.removeFromSuperview()
+        DispatchQueue.rc.safeRunMainQueue {
+            self.animation?.hiddenLayout()
+            UIView.animate(withDuration: 0.35) {
+                self.rc.setNeedsDisplay()
+            } completion: { completion in
+                self.removeFromSuperview()
+            }
         }
     }
     required public init?(coder: NSCoder) {

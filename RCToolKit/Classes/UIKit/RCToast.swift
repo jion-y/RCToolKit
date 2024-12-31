@@ -13,7 +13,7 @@ open class RCToast {
         DispatchQueue.rc.safeRunMainQueue {
             guard let view = view else { return }
             var stype =  ToastStyle()
-            stype.backgroundColor = .rc.rgba(r: 180, g: 180, b: 180, a: 0.3)
+            stype.backgroundColor = .rc.rgba(r: 150, g: 150, b: 150, a: 0.8)
             stype.messageFont = .boldSystemFont(ofSize: 14)
             stype.verticalPadding  =  14
             stype.cornerRadius = 4
