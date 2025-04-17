@@ -17,7 +17,7 @@ public protocol PaymentTransaction {
 }
 
 /// Purchased product
-public struct PurchaseDetails {
+public struct RCPurchaseDetails {
     public let productId: String
     public let quantity: Int
     public let product: SKProduct
@@ -38,8 +38,8 @@ public struct PurchaseDetails {
 
 /// Purchase result
 public enum PurchaseResult {
-    case success(purchase: PurchaseDetails)
-    case deferred(purchase: PurchaseDetails)
+    case success(purchase: RCPurchaseDetails)
+    case deferred(purchase: RCPurchaseDetails)
     case error(error: SKError)
 }
 

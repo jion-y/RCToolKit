@@ -12,15 +12,18 @@ public protocol RCPopupEnabel:AnyObject {
     func showLayout()
     func hiddenLayout()
     func layoutView()
+    func onCloseEvent()
 }
-
+extension RCPopupEnabel {
+    func onCloseEvent(){}
+}
 open class RCPopupView<T>: UIView where T:RCPopupEnabel {
 
     public weak var animation: T?
     public override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .rc.rgba(r: 0, g: 0, b: 0, a: 0.7)
-        let btn = self.rc.addButton(rect: .zero, image: UIImage(), target: self, action: #selector(RCPopupView.hidden), event: .touchUpInside)
+        let btn = self.rc.addButton(rect: .zero, image: UIImage(), target: self, action: #selector(RCPopupView.touchCloseHandler), event: .touchUpInside)
         btn.snp.makeConstraints { make in
             make.top.left.bottom.right.equalTo(0)
         }
@@ -30,17 +33,24 @@ open class RCPopupView<T>: UIView where T:RCPopupEnabel {
     }
     
     
-    public func Show() {
+    public func Show(view:UIView? = UIDevice.rc.keyWindow) {
         
-        let keyWindow = UIApplication.shared.connectedScenes
-                        .map({ $0 as? UIWindowScene })
-                        .compactMap({ $0 })
-                        .first?.windows.first
-        
-        guard  let window = keyWindow else {
-            return
+
+        if let v = view {
+            v.addSubview(self)
+        } else {
+            
+            let keyWindow = UIApplication.shared.connectedScenes
+                .map({ $0 as? UIWindowScene })
+                .compactMap({ $0 })
+                .first?.windows.first
+            
+            guard  let window = keyWindow else {
+                return
+            }
+            window.addSubview(self)
         }
-        window.addSubview(self)
+        
         self.animation?.showLayout()
         
         UIView.animate(withDuration: 0.35) {
@@ -48,7 +58,7 @@ open class RCPopupView<T>: UIView where T:RCPopupEnabel {
         }
         
     }
-    @objc public func hidden() {
+     public func hidden() {
         DispatchQueue.rc.safeRunMainQueue {
             self.animation?.hiddenLayout()
             UIView.animate(withDuration: 0.35) {
@@ -58,6 +68,12 @@ open class RCPopupView<T>: UIView where T:RCPopupEnabel {
             }
         }
     }
+    @objc
+    private func touchCloseHandler(){
+        self.animation?.onCloseEvent()
+        self.hidden()
+    }
+    
     required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

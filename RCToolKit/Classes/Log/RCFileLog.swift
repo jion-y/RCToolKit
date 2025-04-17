@@ -7,7 +7,7 @@
 
 import Foundation
 public class RCFileLog: NSObject {
-    public var logCacheSize: Int = 20
+    public var logCacheSize: Int = 2
     public var logDir: String {
         set {
             if newValue.rc.isEmpty { return }
@@ -41,7 +41,7 @@ public class RCFileLog: NSObject {
     }
     
     deinit {
-        writeLogToFile()
+//        writeLogToFile()
     }
 }
 

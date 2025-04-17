@@ -19,6 +19,38 @@ public extension ExtensionWrapper where Base == UIDevice.Type {
             return UIApplication.shared.keyWindow
         }
     }
+    var isIphone:Bool {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return true
+        }
+        return false
+    }
+    var isIpad:Bool {
+        if UIDevice.current.userInterfaceIdiom == .pad  {
+            return true
+        }
+        return false
+    }
+    var isMacIpad:Bool {
+        if #available(iOS 14.0, *) {
+            if  ProcessInfo.processInfo.isiOSAppOnMac {
+                return true
+            }
+        } else {
+            // Fallback on earlier versions
+        }
+        return false
+    }
+    var isMac:Bool {
+        if #available(iOS 14.0, *) {
+            if UIDevice.current.userInterfaceIdiom == .mac {
+                return true
+            }
+        } else {
+            // Fallback on earlier versions
+        }
+        return false
+    }
 
     var screenWidth: CGFloat {
         UIScreen.main.bounds.width

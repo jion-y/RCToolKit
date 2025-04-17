@@ -35,6 +35,8 @@ public enum AdapterMode {
     case i_12
     case i_12Pro
     case i_12ProMax
+    case i_ipadMin
+    case i_ipadPro11
 }
 
 /// 各个设备尺寸
@@ -56,6 +58,8 @@ let deviceSizeMap: [AdapterMode: CGSize] = [
     AdapterMode.i_12: CGSize(width: 390, height: 844),
     AdapterMode.i_12Pro: CGSize(width: 390, height: 844),
     AdapterMode.i_12ProMax: CGSize(width: 428, height: 926),
+    AdapterMode.i_ipadMin: CGSize(width: 768, height: 1024),
+    AdapterMode.i_ipadPro11:CGSize(width: 834, height: 1194)
 ]
 
 func getStandardSize(adaptMode: AdapterMode, defaultMode: AdapterMode = .i_6s) -> CGSize {

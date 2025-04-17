@@ -17,9 +17,9 @@ protocol TransactionController {
 }
 
 public enum TransactionResult {
-    case purchased(purchase: PurchaseDetails)
+    case purchased(purchase: RCPurchaseDetails)
     case restored(purchase: Purchase)
-    case deferred(purchase: PurchaseDetails)
+    case deferred(purchase: RCPurchaseDetails)
     case failed(error: SKError)
 }
 

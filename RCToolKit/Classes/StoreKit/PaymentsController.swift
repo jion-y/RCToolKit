@@ -33,8 +33,7 @@ struct Payment: Hashable {
 
 public struct PaymentDiscount {
     let discount: AnyObject?
-
-    @available(iOS 12.2, tvOS 12.2, OSX 10.14.4, watchOS 6.2, macCatalyst 13.0, *)
+    
     public init(discount: SKPaymentDiscount) {
         self.discount = discount
     }
@@ -73,13 +72,13 @@ class PaymentsController: TransactionController {
         let transactionState = transaction.transactionState
 
         if transactionState == .purchased {
-            let purchase = PurchaseDetails(productId: transactionProductIdentifier, quantity: transaction.payment.quantity, product: payment.product, transaction: transaction, originalTransaction: transaction.original, needsFinishTransaction: !payment.atomically)
+            let purchase = RCPurchaseDetails(productId: transactionProductIdentifier, quantity: transaction.payment.quantity, product: payment.product, transaction: transaction, originalTransaction: transaction.original, needsFinishTransaction: !payment.atomically)
 
             payment.callback(.purchased(purchase: purchase))
 
-            if payment.atomically {
-                paymentQueue.finishTransaction(transaction)
-            }
+//            if payment.atomically {
+//                paymentQueue.finishTransaction(transaction)
+//            }
             payments.remove(at: paymentIndex)
             return true
         }
@@ -87,7 +86,12 @@ class PaymentsController: TransactionController {
         if transactionState == .restored {
             print("Unexpected restored transaction for payment \(transactionProductIdentifier)")
 
-            let purchase = PurchaseDetails(productId: transactionProductIdentifier, quantity: transaction.payment.quantity, product: payment.product, transaction: transaction, originalTransaction: transaction.original, needsFinishTransaction: !payment.atomically)
+            let purchase = RCPurchaseDetails(productId: transactionProductIdentifier,
+                                             quantity: transaction.payment.quantity,
+                                             product: payment.product,
+                                             transaction: transaction,
+                                             originalTransaction: transaction.original,
+                                             needsFinishTransaction: !payment.atomically)
 
             payment.callback(.purchased(purchase: purchase))
 
@@ -107,8 +111,13 @@ class PaymentsController: TransactionController {
         }
 
         if transactionState == .deferred {
-            let purchase = PurchaseDetails(productId: transactionProductIdentifier, quantity: transaction.payment.quantity, product: payment.product, transaction: transaction, originalTransaction: transaction.original, needsFinishTransaction: !payment.atomically)
-
+            let purchase = RCPurchaseDetails(productId: transactionProductIdentifier,
+                                             quantity: transaction.payment.quantity,
+                                             product: payment.product,
+                                             transaction: transaction,
+                                             originalTransaction: transaction.original,
+                                             needsFinishTransaction: !payment.atomically)
+            
             payment.callback(.deferred(purchase: purchase))
 
             payments.remove(at: paymentIndex)
