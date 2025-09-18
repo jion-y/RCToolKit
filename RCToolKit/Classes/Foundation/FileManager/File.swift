@@ -46,7 +46,7 @@ public class File {
             }
             if let baseAdd = ptr.baseAddress {
                 let wrst = fwrite(baseAdd, MemoryLayout<Int8>.size, ptr.count, filePointer)
-                print("wrst = \(wrst)")
+            
             } else {
                 print(" base addr nil")
             }

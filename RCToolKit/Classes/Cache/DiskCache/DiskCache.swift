@@ -14,7 +14,8 @@ public class DiskCache: PTBaseCache {
             let url = URL(fileURLWithPath: cacheFilePath)
             do {
                 let data = try Data(contentsOf: url)
-                let value = V.decode(data: data)
+                let decorderData =  try data.rc.decrypt(keyStr: self.aesKey)
+                let value = V.decode(data: decorderData)
                 return value as? V
             } catch {
                 print(" cache key \(key.cacheKey()) file failure  error \(error)")
@@ -32,7 +33,8 @@ public class DiskCache: PTBaseCache {
             return
         }
         do {
-            try data.write(to: URL(fileURLWithPath: cacheFilePath))
+            let encoderData = try data.rc.aesEncrypt(keyStr: self.aesKey)
+            try encoderData.write(to: URL(fileURLWithPath: cacheFilePath))
         } catch {
             print(" cache key \(key.cacheKey()) file failure  error \(error)")
         }

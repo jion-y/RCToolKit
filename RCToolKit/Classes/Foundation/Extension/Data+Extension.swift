@@ -7,6 +7,14 @@
 
 import CommonCrypto
 import Foundation
+import CryptoKit
+// 错误处理
+enum EncryptionError: Error {
+    case invalidKeySize
+    case invalidData
+    case decryptionFailed
+    case decodingFailed
+}
 extension Data:ExtensionCompatible {}
 public extension ExtensionWrapper where Base == Data {
     var md5Str: String {
@@ -24,4 +32,39 @@ public extension ExtensionWrapper where Base == Data {
         #endif
         return digest.map { String(format: "%02x", $0) }.joined()
     }
+    
+    // 加密函数
+    func aesEncrypt(keyStr: String) throws -> Data {
+        
+        let key = try createKey(from: keyStr)
+        let sealedBox = try AES.GCM.seal(base, using: key)
+        return sealedBox.combined! // 包含 nonce + 密文 + tag
+    }
+    // 解密函数
+    func decrypt(keyStr: String) throws -> Data {
+        let key = try createKey(from: keyStr)
+        let sealedBox = try AES.GCM.SealedBox(combined: base)
+        let decryptedData = try AES.GCM.open(sealedBox, using: key)
+        return decryptedData
+    }
+    
+    // 将字符串转换为256位密钥
+    func createKey(from string: String) throws -> SymmetricKey {
+        // 将字符串转换为Data
+        guard var keyData = string.data(using: .utf8) else {
+            throw EncryptionError.invalidKeySize
+        }
+        
+        // 检查并调整密钥长度
+        if keyData.count > 32 {
+            // 如果超过32字节，截断
+            keyData = keyData.prefix(32)
+        } else if keyData.count < 32 {
+            // 如果不足32字节，用0填充
+            keyData.append(contentsOf: [UInt8](repeating: 0, count: 32 - keyData.count))
+        }
+        
+        return SymmetricKey(data: keyData)
+    }
 }
+

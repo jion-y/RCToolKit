@@ -8,6 +8,8 @@
 import Foundation
 //// K: KeyEnable, V: ValueEnable
 public class PTBaseCache {
+    
+    public var aesKey:String = "com.toolkit.cache"
     /// 最大混存大小
     public var maxCacheSize: UInt32 = 0
 

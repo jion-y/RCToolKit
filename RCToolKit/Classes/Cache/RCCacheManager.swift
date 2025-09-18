@@ -8,6 +8,7 @@
 import CommonCrypto
 import Foundation
 import UIKit
+import CryptoKit
 
 // MARK: - KeyEnable
 
@@ -43,6 +44,7 @@ public enum PTCachePolicy: Int {
 
 // K 建议用 string
 public class Cahche {
+    public var aesKey:String = "com.toolkit.cache"
     /// 内存缓存大小，默认 50M
     public var momeryCacheSize: UInt32 = 1024 * 1024 * 50 {
         didSet {
@@ -150,16 +152,24 @@ extension Cahche {
     private func getMomoryCache(policy: PTCachePolicy) -> PTBaseCache? {
         switch policy {
         case .FIFO:
-            return FIFOMemoryCache()
+            let cache =  FIFOMemoryCache()
+            cache.aesKey = self.aesKey
+            return cache
         case .LFU:
-            return LFUMemoryCache()
+            let cache =  LFUMemoryCache()
+            cache.aesKey = self.aesKey
+            return cache
         case .LRU:
-            return LRUMemoryCache()
+            let cache =  LRUMemoryCache()
+            cache.aesKey = self.aesKey
+            return cache
         }
     }
 
     private func getDiskCache(policy _: PTCachePolicy) -> PTBaseCache? {
-        return DiskCache()
+        let cache =  DiskCache()
+        cache.aesKey = self.aesKey
+        return cache
     }
 
     private func defaultCachePath() -> String {
@@ -209,6 +219,7 @@ extension String: ValueEnable {
     }
 
     public func encode() -> Data? {
+        
         return data(using: .utf8)
     }
 }
