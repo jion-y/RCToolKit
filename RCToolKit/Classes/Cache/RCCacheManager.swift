@@ -44,7 +44,12 @@ public enum PTCachePolicy: Int {
 
 // K 建议用 string
 public class Cahche {
-    public var aesKey:String = "com.toolkit.cache"
+    public var aesKey:String = "com.toolkit.cache" {
+        didSet {
+            momeryCache?.aesKey = aesKey
+            diskCache?.aesKey = aesKey
+        }
+    }
     /// 内存缓存大小，默认 50M
     public var momeryCacheSize: UInt32 = 1024 * 1024 * 50 {
         didSet {

@@ -105,7 +105,9 @@ open class StaticFileDownloader {
     
     func startDownloadFile(from url: URL, to destination: URL?) async throws -> Data? {
         do {
-            let (data, response) = try await URLSession.shared.data(for: URLRequest(url: url))
+            let condig = URLSessionConfiguration.default
+            condig.requestCachePolicy = .reloadIgnoringLocalAndRemoteCacheData
+            let (data, response) = try await URLSession(configuration: condig).data(for: URLRequest(url: url))
             guard let httpResponse = response as? HTTPURLResponse,
                   (200 ... 299).contains(httpResponse.statusCode)
             else {
@@ -148,6 +150,8 @@ open class StaticFileDownloader {
     
     private func updateData(url: URL, value: Data) {
         let key = ( getBaseURL(from: url) ?? "DefaultData" )
+        
+        RCLog.rc.logInfo(message: " url : \(url.absoluteString)  data \(String(data:value,encoding: .utf8))")
         cache.cache(value, for: key)
     }
 
