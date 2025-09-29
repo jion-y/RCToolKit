@@ -10,14 +10,14 @@ import Foundation
 var bundlePathCache: [String: String] = [:]
 var bundleCache: [String: Bundle] = [:]
 
-open  class Localized {
+open class Localized {
     static var KCustomLanguageKey: String = "KCustomLanguageKey"
     static var gCustomLanguage: String?
     static var gIgnoreTraditionChinese: Bool = true
     static var gRTLOption: Bool = false
     
     open class func getLocaizedString(for key: String, in bundle: String)->String {
-        return getLocaizedString(for: key, value: nil, in: bundle.rc.isEmpty ? "Main":bundle)
+        return getLocaizedString(for: key, value: nil, in: bundle.rc.isEmpty ? "Main" : bundle)
     }
     
     open class func getLocaizedString(for key: String, value: String?, in bundle: String)->String {
@@ -35,18 +35,17 @@ open  class Localized {
             }
         }
         if let _ = gCustomLanguage {
-            if  let path = bd?.path(forResource: language, ofType: "lproj") {
+            if let path = bd?.path(forResource: language, ofType: "lproj") {
                 bd = Bundle(path: path)
             } else {
                 let path = bd?.path(forResource: "en", ofType: "lproj")
                 bd = Bundle(path: path!)
             }
-            
         }
-        return NSLocalizedString(key,tableName: nil,bundle: bd!,value: value ?? "", comment: "")
+        return NSLocalizedString(key, tableName: nil, bundle: bd!, value: value ?? "", comment: "")
     }
-    open class func setCurrentLanguage(language:String) {
-        
+
+    open class func setCurrentLanguage(language: String) {
         UserDefaults.standard.setValue(language, forKey: KCustomLanguageKey)
         UserDefaults.standard.synchronize()
         gCustomLanguage = nil

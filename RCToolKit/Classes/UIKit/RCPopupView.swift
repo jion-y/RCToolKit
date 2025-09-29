@@ -18,14 +18,15 @@ extension RCPopupEnabel {
     func onCloseEvent(){}
 }
 open class RCPopupView<T>: UIView where T:RCPopupEnabel {
-
     public weak var animation: T?
-    public override init(frame: CGRect) {
+    public  init(frame: CGRect,closeWhenCloseWhiteSpace:Bool = true) {
         super.init(frame: frame)
         self.backgroundColor = .rc.rgba(r: 0, g: 0, b: 0, a: 0.7)
-        let btn = self.rc.addButton(rect: .zero, image: UIImage(), target: self, action: #selector(RCPopupView.touchCloseHandler), event: .touchUpInside)
-        btn.snp.makeConstraints { make in
-            make.top.left.bottom.right.equalTo(0)
+        if closeWhenCloseWhiteSpace {
+            let btn = self.rc.addButton(rect: .zero, image: UIImage(), target: self, action: #selector(RCPopupView.touchCloseHandler), event: .touchUpInside)
+            btn.snp.makeConstraints { make in
+                make.top.left.bottom.right.equalTo(0)
+            }
         }
         self.animation = T.initize(superView: self) as? T
         self.animation?.layoutView()
