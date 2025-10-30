@@ -11,6 +11,11 @@ import StoreKit
 @available(iOS 13, *)
 // 协程封装下，方便上传使用
 open class RCStoreKit2 {
+    
+    public func registerDelegate(_ delegate:PaymentTransactionStateDelegate?) {
+        RCStoreKit.registerDelegate(delegate)
+    }
+    
     public class func getProductInfo(_ productIds: Set<String>) async -> RetrieveResults {
         await withCheckedContinuation { continuation in
             let _ = RCStoreKit.getProductInfo(productIds) { result in

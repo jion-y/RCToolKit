@@ -45,7 +45,7 @@ public class PTBaseCache {
 
     public func cache<K: KeyEnable, V: ValueEnable>(key: K, value: V) {
         if let node = cacheMap[key.cacheKey()] {
-            currentCacheSize -= node.size
+            currentCacheSize = max(currentCacheSize - node.size, 0)
             node.update(value: value)
             currentCacheSize += node.size
             return

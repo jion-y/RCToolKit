@@ -8,6 +8,10 @@
 import Foundation
 import StoreKit
 
+public protocol PaymentTransactionStateDelegate:NSObjectProtocol {
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction])
+}
+
 protocol TransactionController {
     /// Process the supplied transactions on a given queue.
     /// - parameter transactions: transactions to process
@@ -42,6 +46,7 @@ open class RCPaymentQueueDataProvider: NSObject {
     private let completeTransactionsController: CompleteTransactionsController = CompleteTransactionsController()
     let paymentQueue: SKPaymentQueue
 //    private var entitlementRevocation: EntitlementRevocation?
+    public weak var delegate:PaymentTransactionStateDelegate?
     
     deinit {
         paymentQueue.remove(self)
@@ -95,6 +100,7 @@ open class RCPaymentQueueDataProvider: NSObject {
 
 extension RCPaymentQueueDataProvider: SKPaymentTransactionObserver {
     public func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        self.delegate?.paymentQueue(queue, updatedTransactions: transactions)
         var unhandledTransactions = transactions.filter { $0.transactionState != .purchasing }
         
         if unhandledTransactions.count > 0 {

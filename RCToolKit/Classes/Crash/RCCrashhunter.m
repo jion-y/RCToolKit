@@ -87,7 +87,7 @@ void exceptionHandler(NSException *exception) {
     if (self.crashCallBack) {
         self.crashCallBack(crashLog);
     }
-#ifdef DEBUG
+//#ifdef DEBUG
     NSString *message = [NSString stringWithFormat:@"抱歉，APP发生了异常，请与开发人员联系，点击屏幕继续并自动复制错误信息到剪切板。\n\n异常报告:\n异常名称：%@\n异常原因：%@\n堆栈信息：%@\n", [exception name], [exception reason], stackInfo];
     NSLog(@"%@",message);
 //    [self showCrashToastWithMessage:message];
@@ -101,7 +101,7 @@ void exceptionHandler(NSException *exception) {
         }
     }
     CFRelease(allModes);
-#endif
+//#endif
     [self unregisterObserver];
     if ([[exception name] isEqual:UncaughtExceptionHandlerSignalExceptionName]) {
         kill(getpid(), [[[exception userInfo] objectForKey:UncaughtExceptionHandlerSignalKey] intValue]);

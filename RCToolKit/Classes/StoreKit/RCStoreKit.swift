@@ -19,6 +19,15 @@ open class RCStoreKit {
     
     
     fileprivate static let `default` = RCStoreKit()
+    
+    public func registerDelegate(_ delegate:PaymentTransactionStateDelegate?) {
+        paymentQueueProvider.delegate = delegate
+    }
+    
+    public class func registerDelegate(_ delegate:PaymentTransactionStateDelegate?) {
+        RCStoreKit.default.registerDelegate(delegate)
+    }
+    
 }
 
 public extension RCStoreKit {

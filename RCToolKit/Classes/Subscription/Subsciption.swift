@@ -32,7 +32,7 @@ public class WeakProxySubscriber: NSObject {
 
     private weak var target: Subcribable?
     private let identifier = UUID().uuidString
-    init(_ tagert: Subcribable) {
+    public init(_ tagert: Subcribable) {
         self.target = tagert
     }
 
