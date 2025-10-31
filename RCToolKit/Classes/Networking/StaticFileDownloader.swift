@@ -144,7 +144,7 @@ open class StaticFileDownloader {
     private func getEtagValue(url: URL) -> String {
         let key = ( getBaseURL(from: url) ?? "DefaultEtag") + "_Etag"
         var value = ""
-        value = cache.getValue(key, model: value) ?? ""
+        value = cache.getValue(key) ?? ""
         return value
     }
     
@@ -158,7 +158,7 @@ open class StaticFileDownloader {
     private func getData(url: URL) -> Data {
         let key = ( getBaseURL(from: url) ?? "DefaultData" )
         var value = Data()
-        value = cache.getValue(key, model: value) ?? Data()
+        value = cache.getValue(key) ?? Data()
         return value
     }
     

@@ -120,7 +120,7 @@ public extension Cahche {
         }
     }
 
-    func getValue<K: KeyEnable, V: ValueEnable>(_ key: K, model _: V) -> V? {
+    func getValue<K: KeyEnable, V: ValueEnable>(_ key: K) -> V? {
         if cacheType == .all {
             var momeryCacheResult: V?
             var diskCacheResult: V?
