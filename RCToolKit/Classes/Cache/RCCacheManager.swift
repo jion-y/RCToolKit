@@ -43,7 +43,7 @@ public enum PTCachePolicy: Int {
 // MARK: - Cahche
 
 // K 建议用 string
-public class Cahche {
+public class RCCache {
     public var aesKey:String = "com.toolkit.cache" {
         didSet {
             momeryCache?.aesKey = aesKey
@@ -110,7 +110,7 @@ public class Cahche {
 
 // MARK: - extension Cache func
 
-public extension Cahche {
+public extension RCCache {
     func cache<K: KeyEnable, V: ValueEnable>(_ value: V, for key: K) {
         if cacheType == .all || cacheType == .momery {
             momeryCache?.cache(key: key, value: value)
@@ -153,7 +153,7 @@ public extension Cahche {
 
 // MARK: - extension private func
 
-extension Cahche {
+extension RCCache {
     private func getMomoryCache(policy: PTCachePolicy) -> PTBaseCache? {
         switch policy {
         case .FIFO:

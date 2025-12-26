@@ -8,8 +8,8 @@
 import Foundation
 open class StaticFileDownloader {
     public var ignorEtag:Bool
-    private var cache: Cahche
-    public init(ignorEtag: Bool = false, cache: Cahche =  .init(type: .disk, policy: .LRU)) {
+    private var cache: RCCache
+    public init(ignorEtag: Bool = false, cache: RCCache =  .init(type: .disk, policy: .LRU)) {
         self.ignorEtag = ignorEtag
         self.cache = cache
     }
