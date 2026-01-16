@@ -9,6 +9,13 @@ import Foundation
 import UIKit
 
 extension ExtensionWrapper where Base: UIView {
+    
+    public var isIpad:Bool {
+        return UIDevice.rc.isMacIpad || UIDevice.rc.isIpad
+    }
+    public var isIphone:Bool {
+        return UIDevice.rc.isIphone
+    }
     public var x: CGFloat {
         set {
             var frame = self.base.frame

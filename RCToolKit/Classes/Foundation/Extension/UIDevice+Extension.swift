@@ -108,7 +108,11 @@ public extension ExtensionWrapper where Base == UIDevice.Type {
     
     /// 状态栏+导航栏的高度
     func navigationFullHeight() -> CGFloat {
-        statusBarHeight() + navigationBarHeight()
+        if UIDevice.rc.isIphone {
+            return statusBarHeight() + navigationBarHeight()
+        } else {
+            return 100
+        }
     }
     
     /// 底部导航栏高度

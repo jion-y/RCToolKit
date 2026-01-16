@@ -14,6 +14,7 @@ public class PTBaseCache {
     public var maxCacheSize: UInt32 = 0
 
     private var _cacheDir: String = ""
+    private let lock = NSLock()
     /// 缓存路径:只针对磁盘了有效
     public var cacheDir: String {
         set {
@@ -30,6 +31,8 @@ public class PTBaseCache {
 
     public var currentCacheSize: UInt32 = 0 {
         didSet {
+            lock.lock()
+            defer { lock.unlock() }
             if currentCacheSize >= maxCacheSize {
                 onMomeryWarring()
             }

@@ -8,37 +8,43 @@
 import Foundation
 
 public class DiskCache: PTBaseCache {
+    private let write_queue:DispatchQueue = DispatchQueue(label: "com.rc.cacheQueue",attributes:.concurrent)
     override public func cacheFor<K, V>(key: K) -> V? where K: KeyEnable, V: ValueEnable {
-        let cacheFilePath = fileFullPath(fileName: fileName(with: key))
-        if existFile(path: cacheFilePath) {
-            let url = URL(fileURLWithPath: cacheFilePath)
-            do {
-                let data = try Data(contentsOf: url)
-                let decorderData =  try data.rc.decrypt(keyStr: self.aesKey)
-                let value = V.decode(data: decorderData)
-                return value as? V
-            } catch {
-                print(" cache key \(key.cacheKey()) file failure  error \(error)")
+       return self.write_queue.sync(flags: .barrier) {
+            let cacheFilePath = fileFullPath(fileName: fileName(with: key))
+            if existFile(path: cacheFilePath) {
+                let url = URL(fileURLWithPath: cacheFilePath)
+                do {
+                    let data = try Data(contentsOf: url)
+                    let decorderData =  try data.rc.decrypt(keyStr: self.aesKey)
+                    let value = V.decode(data: decorderData)
+                    return value as? V
+                } catch {
+                    print(" cache key \(key.cacheKey()) file failure  error \(error)")
+                }
             }
+            return nil
         }
-        return nil
     }
 
     override public func cache<K, V>(key: K, value: V) where K: KeyEnable, V: ValueEnable {
-        let cacheFilePath = fileFullPath(fileName: fileName(with: key))
-        guard let data = value.encode() else {
-            if existFile(path: cacheFilePath) {
-                deletePath(path: cacheFilePath)
+        self.write_queue.async {
+            let cacheFilePath = self.fileFullPath(fileName: self.fileName(with: key))
+            guard let data = value.encode() else {
+                if self.existFile(path: cacheFilePath) {
+                    self.deletePath(path: cacheFilePath)
+                }
+                return
             }
-            return
+            do {
+                let encoderData = try data.rc.aesEncrypt(keyStr: self.aesKey)
+                try encoderData.write(to: URL(fileURLWithPath: cacheFilePath))
+            } catch {
+                print(" cache key \(key.cacheKey()) file failure  error \(error)")
+            }
+            self.currentCacheSize += UInt32(data.count)
         }
-        do {
-            let encoderData = try data.rc.aesEncrypt(keyStr: self.aesKey)
-            try encoderData.write(to: URL(fileURLWithPath: cacheFilePath))
-        } catch {
-            print(" cache key \(key.cacheKey()) file failure  error \(error)")
-        }
-        currentCacheSize += UInt32(data.count)
+
     }
 
     override public func delete(key: String) {

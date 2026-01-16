@@ -40,7 +40,7 @@ public extension ExtensionWrapper where Base == FileManager {
         }
         var totalSize: UInt32 = 0
         files.forEach { filePath in
-            totalSize += fileSize(filePath)
+            totalSize += fileSize(path + filePath)
         }
         return totalSize
     }

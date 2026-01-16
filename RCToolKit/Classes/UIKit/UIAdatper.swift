@@ -73,11 +73,23 @@ func getStandardSize(adaptMode: AdapterMode, defaultMode: AdapterMode = .i_6s) -
 public protocol AdapterEable {
     static func * (lsh: Self, rsh: CGFloat) -> Self
     var aptValue: Self { get }
+    
 }
 
 public extension AdapterEable {
+    /// 自动适配（使用默认规则）
     var aptValue: Self {
-        return UIAdatper.adapter(element: self)
+        UIAdatper.adapter(element: self)
+    }
+    
+    /// 为iPad设备设置值（不缩放）
+    func forPad(_ value: Self) -> Self {
+       return UIAdatper.noScaleAdapter(iphone: self, ipad: value)
+    }
+    
+    /// 为iPad设备设置缩放后的值
+    func forPadScaled(_ value: Self) -> Self {
+       return  UIAdatper.adapterIpad(iphone: self, ipad: value)
     }
 }
 
@@ -92,9 +104,28 @@ public enum UIAdatper {
     static func adapter<T>(element: T) -> T where T: AdapterEable {
         return element * scale
     }
+    static func adapterIpad<T>(iphone:T,ipad:T) -> T where T: AdapterEable {
+        if UIDevice.rc.isIphone {
+            return iphone * scale
+        } else if UIDevice.rc.isIpad || UIDevice.rc.isMacIpad {
+            return ipad * scale
+        } else {
+            return iphone
+        }
+    }
+    static func noScaleAdapter<T>(iphone:T,ipad:T) -> T where T: AdapterEable {
+        if UIDevice.rc.isIphone {
+            return iphone
+        } else if UIDevice.rc.isIpad || UIDevice.rc.isMacIpad {
+            return ipad
+        } else {
+            return iphone
+        }
+    }
 }
 
 extension CGSize: AdapterEable {
+    
     public static func * (lsh: CGSize, rsh: CGFloat) -> CGSize {
         return CGSize(width: lsh.width * rsh, height: lsh.height * rsh)
     }
@@ -129,6 +160,7 @@ extension Double: AdapterEable {
     }
 }
 extension Int:AdapterEable {
+
     public static func * (lsh: Int, rsh: CGFloat) -> Int {
         return Int(CGFloat(lsh) * rsh)
     }

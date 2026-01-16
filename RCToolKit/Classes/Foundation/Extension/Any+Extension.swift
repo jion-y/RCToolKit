@@ -14,6 +14,8 @@ extension Double:ExtensionCompatible {}
 extension CGSize:ExtensionCompatible {}
 extension CGFloat:ExtensionCompatible {}
 
+extension Int:ExtensionCompatible {}
+
 public extension ExtensionWrapper {
     var threadId:__uint64_t {
         get {
@@ -72,6 +74,10 @@ public extension ExtensionWrapper where Base == CGFloat {
     func randiansToDegress(_ radians:CGFloat) ->CGFloat {
         return radians * (.pi / 360.0)
     }
+    
+    func toSize() -> CGSize {
+        return CGSizeMake(base,base)
+    }
 }
 
 public extension ExtensionWrapper where Base == CGFloat.Type {
@@ -95,5 +101,14 @@ public extension ExtensionWrapper where Base:Encodable {
     func toJsonString() -> String? {
         guard let data = try? JSONEncoder().encode(base) else { return nil }
         return String(data: data, encoding: .utf8)
+    }
+}
+
+public extension ExtensionWrapper where  Base == Int {
+    func toSize() -> CGSize {
+        return CGSizeMake(CGFloat(base),CGFloat(base))
+    }
+    func toString() -> String {
+        return "\(base)"
     }
 }

@@ -151,14 +151,24 @@ open class StaticFileDownloader {
     private func updateData(url: URL, value: Data) {
         let key = ( getBaseURL(from: url) ?? "DefaultData" )
         
-        RCLog.rc.logInfo(message: " url : \(url.absoluteString)  data \(String(data:value,encoding: .utf8))")
+        RCLog.rc.logInfo(message: " url : \(url.absoluteString)  data size \(value.count)")
         cache.cache(value, for: key)
     }
 
     private func getData(url: URL) -> Data {
-        let key = ( getBaseURL(from: url) ?? "DefaultData" )
-        var value = Data()
-        value = cache.getValue(key) ?? Data()
+        let t1 = Date.rc.now.timeIntervalSince1970
+        RCLog.rc.logInfo(message: "start get data url: \(url.absoluteString)")
+        
+        let key = getBaseURL(from: url) ?? "DefaultData"
+        let value = cache.getValue(key) ?? Data()
+        
+        let t2 = Date.rc.now.timeIntervalSince1970
+        let duration = (t2 - t1) * 1000.0
+        
+        // 计算KB大小
+        let sizeInKB = Double(value.count) / 1024.0
+        RCLog.rc.logInfo(message: "cache data size \(value.count) bytes (\(String(format: "%.2f", sizeInKB)) KB) key \(key) url \(url.absoluteString) 时间 \(String(format: "%.2f", duration)) ms")
+        
         return value
     }
     
